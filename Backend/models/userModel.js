@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true,
     },
+    geo: {
+        type: { type: String, default: 'Point' },
+        coordinates: { type: [Number], required: true }  // [longitude, latitude]
+      },
     lookingForRoom:{
         type:Boolean,
         required:true,

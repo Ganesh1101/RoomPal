@@ -45,15 +45,9 @@ const  roomSchema= new mongoose.Schema({
         type: Number,
         required: true
       },
-      location: {
-        lat: {
-          type: Number,
-          required: true
-        },
-        lon: {
-          type: Number,
-          required: true
-        }
+      geo: {
+        type: { type: String, default: 'Point' },
+        coordinates: { type: [Number], required: true }  // [longitude, latitude]
       },
       amenities: {
         wifi: {

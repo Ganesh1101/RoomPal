@@ -10,11 +10,11 @@ const roomCreation = (req, res) => {
       roomType,
       floor,
       rent,
-      location,
+      geo,
       amenities,
       gender
     } = req.body
-    if (!roomName || !details || availability === undefined || !roomType || !floor || !rent || !location || !amenities || gender === undefined) { 
+    if (!roomName || !details || availability === undefined || !roomType || !floor || !rent || !geo || !amenities || gender === undefined) { 
       return res.status(400).json(baseResponses.constantMessages.ALL_FIELDS_REQUIRED());
     }
     const newRoom = new Room({
@@ -24,7 +24,7 @@ const roomCreation = (req, res) => {
       roomType,
       floor,
       rent,
-      location,
+      geo,
       amenities,
       gender
     });
@@ -46,7 +46,10 @@ const getAllRooms = async (req, res) => {
             floor,
             minRent,
             maxRent,
-            gender
+            gender,
+            latitude,
+            longitude,
+            radius
         } = req.query;
         let filter = {};
         if (availability !== undefined) {
@@ -66,6 +69,30 @@ const getAllRooms = async (req, res) => {
         if (gender) {
             filter.gender = gender;
         }
+        if(latitude !== undefined || longitude !== undefined) {
+
+          const coords = [parseFloat(longitude), parseFloat(latitude)];
+          if (radius !== undefined) {
+            const radiusInMeters = parseFloat(radius) * 1000; // Convert radius from kilometers to meters
+
+            filter.geo = {
+                $geoWithin: {
+                    $centerSphere: [coords, radiusInMeters / 6378100]  // Radius in radians
+                }
+            };
+        } else {
+           
+            filter.geo = {
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: coords
+                    }
+                }
+            };
+
+        }
+      }
         const count = await Room.countDocuments(filter);
         const totalPages = Math.ceil(count / recLimit);
         const roomsList = await Room.find(filter)
