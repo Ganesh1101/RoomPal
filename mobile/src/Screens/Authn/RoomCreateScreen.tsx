@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, Alert, PermissionsAndroid, Platform, Linking } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import CheckBox from '../molecule/TeamxCheckBox';
 import Geolocation from 'react-native-geolocation-service';
 import MapView, { Marker } from 'react-native-maps';
 import ProfileComponent from '../molecule/ProfileComponent';
-import { primaryColor } from '../Styles/Styles'; // Ensure this is correctly imported
+import { primaryColor } from '../Styles/Styles';
 import TeamXLogoImage from '../molecule/TeamXLogoImage';
+import { RootState } from '../../reducers/store';
+import { createRoom } from '../../reducers/room/roomSlice';
 
 const RoomCreateScreen = () => {
+  const dispatch = useDispatch();
   const [roomName, setRoomName] = useState('');
   const [description, setDescription] = useState('');
   const [capacity, setCapacity] = useState(0);
@@ -28,19 +32,17 @@ const RoomCreateScreen = () => {
     { name: 'Smoking', checked: false },
     { name: 'Drinking', checked: false },
   ]);
-  const [error, setError] = useState(null);
+
+  const { isBusy, error, success } = useSelector((state: RootState) => state.room.screen);
 
   const getLocation = async () => {
     const granted = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
     if (granted) {
       Geolocation.getCurrentPosition(
         position => {
-          console.log(position);
           setLocation(position);
         },
         error => {
-          // See error code charts below.
-          console.log(error.code, error.message);
           setLocation(false);
         },
         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
@@ -50,12 +52,9 @@ const RoomCreateScreen = () => {
       if (permission === PermissionsAndroid.RESULTS.GRANTED) {
         Geolocation.getCurrentPosition(
           position => {
-            console.log(position);
             setLocation(position);
           },
           error => {
-            // See error code charts below.
-            console.log(error.code, error.message);
             setLocation(false);
           },
           { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
@@ -91,17 +90,22 @@ const RoomCreateScreen = () => {
   };
 
   const handleSubmitData = () => {
-    console.log('Form submitted:', {
+    const selectedAmenities = amenities.filter(amenity => amenity.checked).map(amenity => amenity.name);
+    const selectedPreferences = preferences.filter(preference => preference.checked).map(preference => preference.name);
+
+    const roomData = {
       roomName,
-      description,
-      capacity,
-      amenities,
-      address,
-      location,
-      roomImages,
-      rent,
-      preferences,
-    });
+      details: description,
+      availability: true, // Assuming room is available when created
+      roomType: 'Type A', // Placeholder, replace with actual room type if needed
+      floor: 1, // Placeholder, replace with actual floor if needed
+      rent: parseFloat(rent),
+      location: address,
+      amenities: selectedAmenities,
+      gender: 'Any', // Placeholder, replace with actual gender if needed
+    };
+
+    dispatch(createRoom(roomData));
   };
 
   const increaseCapacity = () => {
