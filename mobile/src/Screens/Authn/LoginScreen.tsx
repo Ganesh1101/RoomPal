@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn } from '../../reducers/auth/authSlice';
+import { setError, signIn } from '../../reducers/auth/authSlice';
 import TeamXLogoImage from '../molecule/TeamXLogoImage';
 
 const LoginScreen = ({ navigation }) => {
@@ -42,6 +42,7 @@ const LoginScreen = ({ navigation }) => {
           console.log('Login successful, navigating to RoomDetails');
           navigation.navigate('RoomDetails');
         } else {
+          setMobileNumber('login failed');
           console.log('Login failed, staying on LoginScreen');
         }
       });
