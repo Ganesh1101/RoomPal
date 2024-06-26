@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router'
 
+
 const AccountComponent = () =>
   import('./account.component').then(c => c.AccountComponent)
 
@@ -33,12 +34,26 @@ const SetPasswordSuccessComponent = () =>
 const ValidateOtpComponent = () =>
   import('./validate-otp/validate-otp.component').then(c => c.ValidateOtpComponent)
 
+
+  const WelcomeScreenComponent = () =>
+  import('./welcome-screen/welcome-screen.component').then(
+    c => c.WelcomeScreenComponent
+  )
+
+  const IntroductionScreenComponent = () =>
+    import('./introduction-screen/introduction-screen.component').then(
+      c => c.IntroductionScreenComponent
+    )
+
+//    const = HomeComponent()=>
+// import ('./home/home.component').then(c=>c.HomeComponent)
+  
 export const routes: Routes = [
   {
     path: '',
     loadComponent: AccountComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'home' },
+      { path: '', pathMatch: 'full', redirectTo: 'RegisterComponent' },
       { path: 'home', loadComponent: HomeComponent },
       { path: 'login', loadComponent: LoginComponent },
       { path: 'register', loadComponent: RegisterComponent },
@@ -47,6 +62,10 @@ export const routes: Routes = [
       { path: 'set-password-failure', loadComponent: SetPasswordFailureComponent },
       { path: 'set-password-success', loadComponent: SetPasswordSuccessComponent },
       { path: 'validate-otp', loadComponent: ValidateOtpComponent },
+      { path: 'welcome-screen', loadComponent:WelcomeScreenComponent  },
+      { path: 'introduction-screen', loadComponent:IntroductionScreenComponent  },
+    
+
     ],
   },
 ]
