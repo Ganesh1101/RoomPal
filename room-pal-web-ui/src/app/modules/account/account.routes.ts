@@ -53,7 +53,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: AccountComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'RegisterComponent' },
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', loadComponent: HomeComponent },
       { path: 'login', loadComponent: LoginComponent },
       { path: 'register', loadComponent: RegisterComponent },
