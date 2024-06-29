@@ -12,6 +12,7 @@ import { ForgetPasswordComponent } from './modules/account/forget-password/forge
 import { WelcomeScreenComponent } from './modules/account/welcome-screen/welcome-screen.component';
 import { IntroductionScreenComponent } from './modules/account/introduction-screen/introduction-screen.component';
 import { HomeComponent } from './modules/account/home/home.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 
 
@@ -23,7 +24,7 @@ import { HomeComponent } from './modules/account/home/home.component';
      RegisterComponent,ValidateOtpComponent,
      SetPasswordComponent,SetPasswordSuccessComponent,
      SetPasswordFailureComponent,ForgetPasswordComponent,
-     WelcomeScreenComponent,IntroductionScreenComponent,HomeComponent ],
+     WelcomeScreenComponent,IntroductionScreenComponent,HomeComponent,DashboardComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -44,6 +44,7 @@ const ValidateOtpComponent = () =>
     import('./introduction-screen/introduction-screen.component').then(
       c => c.IntroductionScreenComponent
     )
+   
 
 //    const = HomeComponent()=>
 // import ('./home/home.component').then(c=>c.HomeComponent)
@@ -64,6 +65,7 @@ export const routes: Routes = [
       { path: 'validate-otp', loadComponent: ValidateOtpComponent },
       { path: 'welcome-screen', loadComponent:WelcomeScreenComponent  },
       { path: 'introduction-screen', loadComponent:IntroductionScreenComponent  },
+    
     
 
     ],
