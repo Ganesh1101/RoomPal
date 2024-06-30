@@ -8,6 +8,9 @@ import ProfileComponent from '../molecule/ProfileComponent';
 import { primaryColor } from '../Styles/Styles'; // Ensure this is correctly imported
 import TeamXLogoImage from '../molecule/TeamXLogoImage';
 import TeamXErrorText from '../molecule/TeamXErrorText';
+import { addRoom, setBusy, setError, setSuccess } from '../../reducers/room/roomSlice';
+import axios from 'axios';
+import API_BASE_URL from '../../reducers/config/apiConfig';
 const RoomCreateScreen = () => {
     const [roomName, setRoomName] = useState('');
     const [description, setDescription] = useState('');
@@ -52,8 +55,8 @@ const RoomCreateScreen = () => {
     const telegramLinkRef = useRef(null)
     const addressRef = useRef(null);
 
-
-    const handleSubmitData = () => {
+    
+    const handleSubmitData = async () => {
         let hasError = false;
         if (!roomName) {
             setRoomNameError('Please provide your room name')
@@ -108,20 +111,36 @@ const RoomCreateScreen = () => {
         if (!hasError) {
             const formData = {
                 roomName,
-                description,
-                capacity,
-                amenities,
-                address,
+                details: description,
+                availability:capacity, // Assuming 'description' maps to 'details' in API
+                rent: Number(rent), // Ensure 'rent' is converted to number if needed
                 location,
-                roomImages,
-                rent,
-                whatsappLink,
-                telegramLink,
-                preferences,
+                amenities: amenities.filter(item => item.checked).map(item => item.name), // Filter selected amenities
+                gender: 'Male', // Replace with your logic for gender selection
             };
-            console.log('Form Data:', formData);
-            Alert.alert('Success', 'Room created successfully');
-            // navigation.navigate() // Uncomment and implement navigation if needed
+    
+            try {
+                dispatch(setBusy(true));
+                dispatch(setError(''));
+                dispatch(setSuccess(''));
+    
+                // Send POST request to create room
+                const response = await axios.post(`${API_BASE_URL}/room/create`, formData);
+    
+                // Handle success
+                console.log('Room created successfully:', response.data);
+                dispatch(addRoom(response.data.data));
+                dispatch(setSuccess('Room created successfully.'));
+    
+                // Optionally navigate or show success message
+                Alert.alert('Success', 'Room created successfully');
+            } catch (error) {
+                // Handle error
+                dispatch(setError(error.response?.data?.message || error.message || 'Room creation failed'));
+                console.error('Error creating room:', error);
+            } finally {
+                dispatch(setBusy(false));
+            }
         }
     };
     
@@ -529,3 +548,7 @@ const styles = StyleSheet.create({
 });
 
 export default RoomCreateScreen;
+function dispatch(arg0: any) {
+    throw new Error('Function not implemented.');
+}
+
