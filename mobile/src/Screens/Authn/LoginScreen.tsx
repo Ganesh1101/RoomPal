@@ -16,6 +16,7 @@ const LoginScreen = ({ navigation }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const [mobileNumberError, setMobileNumberError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [generalError, setGeneralError] = useState('');
 
   const validateMobileNumber = (mobile) => {
     return mobile.trim().length === 10 && /^\d+$/.test(mobile);
@@ -41,8 +42,9 @@ const LoginScreen = ({ navigation }) => {
     if (valid) {
       await dispatch(signIn(mobileNumber, password))
        if(!authToken){
-        setMobileNumberError('Mobile Number already exists');
+        setGeneralError('Invalid Password or Mobile Number');
        }
+       setGeneralError('')
       ;
     }
   };
@@ -111,6 +113,7 @@ const LoginScreen = ({ navigation }) => {
           />
           <Text style={styles.checkboxLabel}>Remember me</Text>
         </View>
+        {generalError ? <Text style={styles.errorText}>{generalError}</Text> : null}
         <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
           <Text style={styles.buttonText}>Login ➜</Text>
         </TouchableOpacity>
