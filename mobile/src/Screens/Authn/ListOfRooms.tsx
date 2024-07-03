@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { primaryColor,styles } from '../Styles/Styles';
+import {primaryColor, styles} from '../Styles/Styles';
 import {fetchRooms} from '../../reducers/room/roomSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../reducers/store';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../reducers/store';
 
 const data = [
   {
@@ -25,7 +32,8 @@ const data = [
     rent: 1800,
     lookingFor: 'Female',
     match: 62,
-    image: 'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
+    image:
+      'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
     distance: 10,
   },
   {
@@ -35,7 +43,8 @@ const data = [
     rent: 1400,
     lookingFor: 'Female',
     match: 62,
-    image: 'https://t3.ftcdn.net/jpg/02/71/08/28/360_F_271082810_CtbTjpnOU3vx43ngAKqpCPUBx25udBrg.jpg',
+    image:
+      'https://t3.ftcdn.net/jpg/02/71/08/28/360_F_271082810_CtbTjpnOU3vx43ngAKqpCPUBx25udBrg.jpg',
     distance: 10,
   },
   {
@@ -45,7 +54,8 @@ const data = [
     rent: 1300,
     lookingFor: 'Female',
     match: 62,
-    image: 'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
+    image:
+      'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
     distance: 10,
   },
   {
@@ -65,14 +75,15 @@ const data = [
     rent: 1600,
     lookingFor: 'Female',
     match: 62,
-    image: 'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
+    image:
+      'https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=',
     distance: 10,
   },
   // Add more data here
 ];
-const ListOfRooms = () => {
+const ListOfRooms = ({navigation}) => {
   const dispatch = useDispatch();
-  const { data, screen } = useSelector((state: RootState) => state.room);
+  const {data, screen} = useSelector((state: RootState) => state.room);
 
   const [openGender, setOpenGender] = useState(false);
   const [filterGender, setFilterGender] = useState('Both');
@@ -83,12 +94,15 @@ const ListOfRooms = () => {
   useEffect(() => {
     dispatch(fetchRooms());
   }, []);
-
+  const handleFilterPress = () => {
+    navigation.navigate('FilterScreen');
+  };
   const applyFilters = () => {
     const filters: Partial<Room> = {};
 
     if (filterGender !== 'Both') {
       filters.gender = filterGender;
+      console.log(filterGender);
     }
 
     if (filterLocation !== 'All Delhi') {
@@ -100,32 +114,64 @@ const ListOfRooms = () => {
     }
 
     dispatch(fetchRooms(10, 1, filters));
+    return (
+      <View style={styles.roomlistcontainer}>
+        <View style={styles.searchBarContainer}>
+          <Image source={require('../Images/ic_search.png')} style={styles.searchIcon} />
+          <TextInput
+            placeholder='Search by name or location...'
+            placeholderTextColor='#666'
+            style={styles.searchinput}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+  
+          />
+          <TouchableOpacity onPress={handleFilterPress}>
+          <Image source={require('../Images/ic_filter.png')} style={styles.filterIcon} />
+          </TouchableOpacity>
+        </View>
+        {screen.isBusy ? (
+          <Text>Loading...</Text>
+        ) : (
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        )}
+      </View>
+    );
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({item}) => (
     <View style={styles.card}>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{flexDirection: 'row'}}>
         {/* <Image source={{ uri: item.image }} style={styles.image} /> */}
         <View style={styles.info}>
-          <Text style={[styles.name, { paddingBottom: 10 }]}>{item.name}</Text>
-          <View style={{ flexDirection: 'row', gap: 5, paddingBottom: 10 }}>
-            <Image source={require('../Images/ic_location.png')} tintColor={primaryColor} />
+          <Text style={[styles.name, {paddingBottom: 10}]}>{item.name}</Text>
+          <View style={{flexDirection: 'row', gap: 5, paddingBottom: 10}}>
+            <Image
+              source={require('../Images/ic_location.png')}
+              tintColor={primaryColor}
+            />
             <Text style={styles.location}>{item.address}</Text>
           </View>
-          <View style={{ flexDirection: 'row', gap: 30 }}>
-            <Text style={[{ paddingLeft: 5, fontSize: 16 }]}>Rent</Text>
-            <Text style={[{ paddingLeft: 51, fontSize: 16 }]}>Looking for</Text>
+          <View style={{flexDirection: 'row', gap: 30}}>
+            <Text style={[{paddingLeft: 5, fontSize: 16}]}>Rent</Text>
+            <Text style={[{paddingLeft: 51, fontSize: 16}]}>Looking for</Text>
           </View>
-          <View style={{ flexDirection: 'row', gap: 45, paddingBottom: 10 }}>
-            <Text style={[styles.rent, { marginRight: 20 }]}> ₹{item.rent}</Text>
+          <View style={{flexDirection: 'row', gap: 45, paddingBottom: 10}}>
+            <Text style={[styles.rent, {marginRight: 20}]}> ₹{item.rent}</Text>
             <Text style={[styles.lookingFor]}> {item.gender}</Text>
           </View>
-          <View style={{ flexDirection: 'row', paddingBottom: 10 }}>
+          <View style={{flexDirection: 'row', paddingBottom: 10}}>
             <Text style={styles.distance}>{item.distance} Km</Text>
-            <Text style={{ fontSize: 16, color: '#000' }}> from your search</Text>
+            <Text style={{fontSize: 16, color: '#000'}}> from your search</Text>
           </View>
-          <View style={{ flexDirection: 'row', gap: 20 }}>
-            <Text style={[styles.match, { paddingBottom: 10 }]}>Match: {item.match}%</Text>
+          <View style={{flexDirection: 'row', gap: 20}}>
+            <Text style={[styles.match, {paddingBottom: 10}]}>
+              Match: {item.match}%
+            </Text>
             <TouchableOpacity style={styles.detailsButton}>
               <Text style={styles.detailsButtonText}>SEE DETAILS</Text>
             </TouchableOpacity>
@@ -136,42 +182,33 @@ const ListOfRooms = () => {
   );
 
   const genderItems = [
-    { label: 'Both', value: 'Both' },
-    { label: 'Male', value: 'Male' },
-    { label: 'Female', value: 'Female' },
+    {label: 'Both', value: 'Both'},
+    {label: 'Male', value: 'Male'},
+    {label: 'Female', value: 'Female'},
   ];
 
   const locationItems = [
-    { label: 'All Delhi', value: 'All Delhi' },
-    { label: 'Mumbai', value: 'Mumbai' },
-    { label: 'Nearby', value: 'Nellore' },
-    { label: 'Panjam', value: 'Panjam' },
-    { label: 'Nearby', value: 'Nearby' },
+    {label: 'All Delhi', value: 'All Delhi'},
+    {label: 'Mumbai', value: 'Mumbai'},
+    {label: 'Nearby', value: 'Nellore'},
+    {label: 'Panjam', value: 'Panjam'},
+    {label: 'Nearby', value: 'Nearby'},
   ];
 
   return (
     <View style={styles.roomlistcontainer}>
-      <Text style={{ fontSize: 30, color: '#000', fontWeight: 'bold' }}>Listed Rooms</Text>
-      <TextInput
-        placeholder='Search by name or location...'
-        placeholderTextColor='#666'
-        style={styles.searchInput}
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10, gap: -100 }}>
-        <DropDownPicker
-          open={openGender}
-          value={filterGender}
-          items={genderItems}
-          setOpen={setOpenGender}
-          setValue={setFilterGender}
-          style={styles.dropdownPicker}
-          containerStyle={styles.dropdownContainer}
-          dropDownContainerStyle={styles.dropdown}
+      <View style={styles.searchBarContainer}>
+        <Image source={require('../Images/ic_search.png')} style={styles.searchIcon} />
+        <TextInput
+          placeholder='Search by name or location...'
+          placeholderTextColor='#666'
+          style={styles.searchinput}
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+
         />
-        <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
-          <Text style={styles.applyButtonText}>Apply Filters</Text>
+        <TouchableOpacity onPress={handleFilterPress}>
+        <Image source={require('../Images/ic_filter.png')} style={styles.filterIcon} />
         </TouchableOpacity>
       </View>
       {screen.isBusy ? (
@@ -180,7 +217,7 @@ const ListOfRooms = () => {
         <FlatList
           data={data}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={item => item.id}
         />
       )}
     </View>
