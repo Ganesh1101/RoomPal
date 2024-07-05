@@ -11,7 +11,10 @@ const BASE_RESPONSE_MESSAGES = {
         REFUND_FETCHED: 'Refund fetched successfully',
         PAYMENT_CREATED: 'Payment created successfully',
         PASSWORD_RESET_SUCCESS:'Password updated successfully',
-        FEEDBACK:'Feedback updated successfully'
+        FEEDBACK:'Feedback updated successfully',
+        WALLET_UPDATED:'Wallet updated successfully',
+        WALLET_CREATION_SUCCESS:'Wallet created successfully',
+        FUNDS_ADDED_TO_WALLET:'Funds added to wallet successfully'
     },
     ERROR:{
         ALL_FIELDS_REQUIRED: 'All fields are required',
@@ -23,8 +26,9 @@ const BASE_RESPONSE_MESSAGES = {
         ROOM_NOT_FOUND: 'Room not found',
         USER_OR_ROOM_NOT_FOUND:'User or room not found',
         MOBILE_NUMBER_ALREADY_EXISTS:'Mobile number already exists',
-        EMAIL_ALREADY_EXISTS:'Email already exists'
-
+        EMAIL_ALREADY_EXISTS:'Email already exists',
+        WALLET_CREATION_ERROR:'Error occured while wallet creation',
+        WALLET_NOT_FOUND: 'Wallet not found',
     }
 };
 module.exports = {BASE_RESPONSE_MESSAGES};

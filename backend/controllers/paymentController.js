@@ -5,6 +5,7 @@ const Payment = require('../models/paymentModel');
 const PaymentLink = require('../models/paymentLinkModel');
 const { baseResponses } = require('../helpers/baseResponses');
 const Transaction = require('../models/transactionModel');
+const Wallet = require('../models/walletModel');
 Cashfree.XClientId = process.env.X_CLIENT_ID;
 Cashfree.XClientSecret = process.env.X_CLIENT_SECRET;
 Cashfree.XEnvironment = 'SANDBOX';
@@ -45,6 +46,18 @@ const createPayment = async (req, res) => {
         console.log(payment);
         payment.save();
         if(payment.payment_status == 'SUCCESS'){
+            const wallet = await Wallet.findOne({user_id:customer_id});
+            if(wallet){
+                wallet.balance -= (payment.order_amount);
+                wallet.transactions.push({
+                    type: 'debit',
+                    amount: payment.order_amount,
+                    description: `${payment.order_amount} debited from wallet  successfully`,
+                });
+                await wallet.save();
+                return res.status(200).json(baseResponses.constantMessages.WALLET_UPDATED(wallet));
+
+            }
             const transaction = new Transaction({
                 user_id: customer_id,
                 debit_amount: payment.payment_amount

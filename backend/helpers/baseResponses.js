@@ -24,6 +24,10 @@ const baseResponses = {
         USER_OR_ROOM_NOT_FOUND:(data=null)=> baseResponses.error('User or room not found',data),
         MOBILE_NUMBER_ALREADY_EXISTS:(data=null) => baseResponses.error('Mobile number already exists',data),
         EMAIL_ALREADY_EXISTS:(data=null) => baseResponses.error('Email already exists',data),
-    }
+        WALLET_UPDATED:(data=null) => baseResponses.success('Wallet updated successfully',data),
+        WALLET_CREATION_SUCCESS:(data=null) => baseResponses.success('Wallet created successfully',data), 
+        WALLET_CREATION_ERROR:(data=null) => baseResponses.error('Error occured while wallet creation',data),  
+        WALLET_NOT_FOUND: (data=null) => baseResponses.error('Wallet not found',data),
+        FUNDS_ADDED_TO_WALLET: (data=null) => baseResponses.success('Funds added to wallet successfully',data),      }
 };
 module.exports = {baseResponses};

@@ -2,6 +2,7 @@ const { baseResponses } = require('../helpers/baseResponses');
 const Refund = require('../models/refundModel');
 const Order = require('../models/orderModel');
 const Transaction = require('../models/transactionModel');
+const Wallet = require('../models/walletModel');
 const { Cashfree } = require('cashfree-pg');
 require('dotenv').config();
 Cashfree.XClientId = process.env.X_CLIENT_ID;
@@ -27,6 +28,18 @@ const createRefund = async (req, res) => {
         const newRefund = new Refund(response.data);
         await newRefund.save();
         if(newRefund.refund_status === 'SUCCESS'){
+            const wallet = await Wallet.findOne({user_id: order.customer_id});
+            if(wallet){
+                wallet.balance += (newRefund.refund_amount);
+                wallet.transactions.push({
+                    type: 'credit',
+                    amount: newRefund.refund_amount,
+                    description: `${newRefund.refund_amount} credited to wallet  successfully`,
+                });
+                await wallet.save();
+                return res.status(200).json(baseResponses.constantMessages.WALLET_UPDATED(wallet));
+
+            }
             const transaction = new Transaction({
                 user_id: customer_id,
                 credit_amount: payment.payment_amount

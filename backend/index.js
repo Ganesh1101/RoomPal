@@ -8,6 +8,7 @@ const feedbackRoutes = require('./routes/feedbackRoutes');
 const orderRoutes = require('./routes/orderRoutes')
 const paymentRoutes = require('./routes/paymentRoutes');
 const refundRoutes = require('./routes/refundRoutes');
+const walletRoutes = require('./routes/walletRoutes');
 const app = express();
 const port = 3001;
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use('/api/feedback', feedbackRoutes);
 app.use('/api/order', orderRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/refund',refundRoutes);
+app.use('/api/wallet', walletRoutes);
 app.get('/',(req,res)=>{
     res.send('Welcome to RoomMate api');
 });
