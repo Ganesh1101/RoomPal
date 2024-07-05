@@ -14,6 +14,7 @@ import ResetPasswordScreen from './src/Screens/Authn/ResetPasswordScreen';
 import SucessPasswordScreen from './src/Screens/Authn/SuccessPasswordScreen';
 import UnsuccessPasswordScreen from './src/Screens/Authn/UnsuccessPasswordScreen';
 import RoomPalIntro from './src/Screens/Authn/IntroScreen';
+import GpsMap from './src/Screens/Authn/GpsMap';
 
 // Import Landing screens
 import RoomDetails from './src/Screens/Landing/RoomDetails';
@@ -29,7 +30,7 @@ const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
 
 const Authn = () => (
-  <Stack.Navigator initialRouteName="Intro" headerMode="none">
+  <Stack.Navigator initialRouteName="GpsMap" headerMode="none">
     <Stack.Screen name="Intro" component={RoomPalIntro} />
     <Stack.Screen name="LoginScreen" component={LoginScreen} />
     <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
@@ -38,6 +39,8 @@ const Authn = () => (
     <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
     <Stack.Screen name="SucessPasswordScreen" component={SucessPasswordScreen} />
     <Stack.Screen name="UnsuccessPasswordScreen" component={UnsuccessPasswordScreen} />
+    <Stack.Screen name="GpsMap" component={GpsMap} />
+
   </Stack.Navigator>
 );
 
@@ -58,7 +61,7 @@ function App(): React.ReactElement {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Landing" headerMode="none">
+        <Stack.Navigator initialRouteName="Authn" headerMode="none">
           <Stack.Screen name="Authn" component={Authn} />
           <Stack.Screen name="Landing" component={Landing} />
         </Stack.Navigator>
