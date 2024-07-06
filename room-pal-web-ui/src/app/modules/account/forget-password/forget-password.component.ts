@@ -26,23 +26,5 @@ export class ForgetPasswordComponent implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  // resetPasswordForm: FormGroup;
-
-  // constructor(private fb: FormBuilder) {
-  //   this.resetPasswordForm = this.fb.group({
-  //     email: ['', [Validators.required, Validators.email]]
-  //   });
-  // }
-
-  // onSubmit(): void {
-  //   if (this.resetPasswordForm.valid) {
-  //     console.log('Form submitted', this.resetPasswordForm.value);
-  //   } else {
-  //     this.resetPasswordForm.markAllAsTouched();  
-  //   }
-  // }
-
-  // get email() {
-  //   return this.resetPasswordForm.get('email');
-  // }
+  
 }

@@ -8,7 +8,7 @@
     justify-content: space-between;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.854);
-    width: 45%;
+    width: 40%;
     margin: auto;
     font-size: 18px;
     margin-top: 20px;
@@ -164,3 +164,153 @@
   a:hover {
     text-decoration: underline;
   }
+
+ /*media queries for register component*/ 
+
+
+
+  
+  @media screen and  (min-width: 992px) and (max-width: 1199px) {
+  .card {
+  width: 50%;
+
+  }
+  .logo {
+
+   height: 18vh;
+  }
+
+  .input-field {
+
+  padding: 18px;
+  }
+  .button-group {
+  gap: 18px;
+  }
+  .btn {
+    padding: 12px;
+  }
+
+  button {
+  height: 6.5vh;
+  }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+  .card {
+  width: 50%;
+  }
+
+  .logo {
+  height: 16vh;
+  }
+
+  .input-field {
+
+  padding: 15px;
+
+  }
+  .button-group {
+  gap: 15px;
+  }
+
+  .btn {
+  padding: 10px 2px;
+  }
+  button {
+  height: 6vh;
+  }
+  }
+  
+  @media screen and (min-width: 576px) and (max-width: 767px) {
+  .card {
+  width: 65%;
+
+  }
+  
+  .logo {
+  height: 14vh;
+  
+}
+  .input-field {
+  padding: 12px;
+
+}
+  .button-group {
+
+    gap: 12px;
+  }
+  .btn {
+  padding: 8px 15px;
+  }
+  button {
+  height: 5.5vh;
+  }
+  }
+
+  
+  @media screen and (max-width: 575px) {
+  .card {
+  
+    width: 70%;
+  }
+  .logo {
+  height: 12vh;
+  
+}
+  .input-field {
+
+
+    padding: 10px;
+  }
+  .button-group {
+
+    gap: 10px;
+  }
+  ::placeholder{
+
+    font-size: smaller;
+  }
+  .btn {
+  padding: 6px ;
+
+}
+  button {
+  height: 5vh;
+  }
+
+}
+  @media screen and (max-width:415px) {
+
+    .card {
+    width: 70%;
+    }
+   .logo {
+    height: 10vh;
+    }
+    h1{
+      font-size: 20px;
+    }
+   .input-field {
+    padding: 2px;
+    }
+
+    .button-group {
+    gap: 8px;
+    }
+    
+    ::placeholder{
+      font-size: smaller;
+    }
+   .btn {
+    padding: 1px;
+
+  }
+    button {
+    height: 4vh;
+    }
+    }
+
+
+
+

@@ -1,5 +1,8 @@
 import { Component,OnInit } from '@angular/core';
-import { NgClass,JsonPipe  } from '@angular/common';
+import { NgClass,JsonPipe, CommonModule  } from '@angular/common';
+// import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+// import { BrowserAnimationsModule,provideAnimations  } from '@angular/platform-browser/animations';
+
 import {  AbstractControl,
   FormControl,
   FormGroup,
@@ -26,11 +29,11 @@ export class LoginComponent implements OnInit {
     ]),
    password: new FormControl('',[Validators.required, 
      Validators.minLength(6), 
-     Validators.maxLength(16),
      this.passwordValidator,
     ])
   });
-  
+
+
 
   mobileNumberValidator(control: AbstractControl): ValidationErrors | null {
     const value = new String(control.value).trim();
@@ -52,7 +55,6 @@ export class LoginComponent implements OnInit {
     return null;
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
   onLoginClick() {
     this.loginFormGroup.markAllAsTouched();

@@ -8,12 +8,17 @@ import { ValidateOtpComponent } from './modules/account/validate-otp/validate-ot
 import { SetPasswordComponent } from './modules/account/set-password/set-password.component';
 import { HomeComponent } from './modules/account/home/home.component';
 import { ForgetPasswordComponent } from './modules/account/forget-password/forget-password.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+// import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LoginComponent,SetPasswordSuccessComponent,SetPasswordFailureComponent,
-    RegisterComponent,ValidateOtpComponent,SetPasswordComponent,HomeComponent,ForgetPasswordComponent
+    RegisterComponent,ValidateOtpComponent,SetPasswordComponent,HomeComponent,ForgetPasswordComponent,
+    NgxSliderModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

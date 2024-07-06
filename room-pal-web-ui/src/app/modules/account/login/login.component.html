@@ -6,6 +6,7 @@
         <input type="number"
          placeholder="Enter mobile number" 
          class="input-field"
+         id="phone"
          formControlName="mobileNumber"
          [ngClass]="loginFormGroup.controls['mobileNumber'].errors &&
          loginFormGroup.controls['mobileNumber'].touched? 'is-invalid' : ''   "/>
@@ -51,9 +52,7 @@
             @if (loginFormGroup.controls["password"].errors["minlength"]) {
               <div class="invalid-feedback">Minimum 6 characters required</div>
             }
-            @if (loginFormGroup.controls["password"].errors["maxlength"]) {
-              <div class="invalid-feedback">Maximum 16 characters allowed..</div>
-            }
+
             }
         <!-- <pre>{{loginFormGroup.controls["password"].errors | json}}</pre> -->
   

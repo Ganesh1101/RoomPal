@@ -14,7 +14,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .logo {
+  .image {
     width: 100%;
     height: 35vh;
     margin-top: -10%;
@@ -47,4 +47,98 @@
   .next-button:hover {
     background-color: #5821b7;
   }
+  
+/* media queries*/
+
+
+@media (min-width: 992px) and (max-width: 1199px){
+  .welcome-screen{
+    width:100%;
+  }
+  .card {
+    padding: 100px;
+  }
+  .image {
+    height: 35vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  .welcome-screen {
+    width: 100%;
+
+  }
+  .card {
+
+    padding: 80px;
+ }
+
+  .image {
+    height: 30vh;
+  }
+
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+  .welcome-screen {
+    width: 100%;
+  }
+  .card {
+    padding: 60px;
+  }
+  .image {
+    height: 25vh;
+}
+}
+
+@media (max-width: 575px){
+  .welcome-screen {
+    width: 100%;
+
+  }
+  .card {
+    padding: 70px;
+}
+  .image {
+    height: 20vh;
+
+  }
+  .next-button {
+    padding: 5px 10px;
+  }
+}
+@media (max-width:400px){
+  .welcome-screen {
+    width: 100%;
+  }
+  .card {
+    padding: 50px;
+    }
+  .image {
+    height: 20vh;
+
+  }
+  .next-button {
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width:320px){
+  .welcome-screen {
+    width: 100%;
+
+  }
+  .card {
+    padding: 40px;
+
+  }
+
+  .image {
+    height: 20vh;
+  }
+  .next-button {
+    padding: 5px 10px;
+
+  }
+}
   
