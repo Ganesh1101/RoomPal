@@ -1,8 +1,10 @@
+
 <div class="contain">
 <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginClick()">
   <div class="login-screen">
       <div class="card">
         <img src="/images/logo.jpg" alt="Logo" class="logo"/>
+
         <h2>Mobile Number</h2>
         <input type="number"
          placeholder="Enter mobile number" 
@@ -10,6 +12,9 @@
          formControlName="mobileNumber"
          [ngClass]="loginFormGroup.controls['mobileNumber'].errors &&
          loginFormGroup.controls['mobileNumber'].touched? 'is-invalid' : ''   "/>
+
+
+
 
         @if (
             loginFormGroup.controls["mobileNumber"].errors &&
@@ -70,5 +75,6 @@
         </div>
       </div>
     </div>
+
   </form>
-</div>
+

@@ -1,14 +1,19 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import {  NgClass } from '@angular/common';
 
+
 @Component({
   selector: 'app-set-password',
   standalone: true,
+
   imports: [ReactiveFormsModule,NgClass],
+
   templateUrl: './set-password.component.html',
-  styleUrl: './set-password.component.scss'
+  styleUrls: ['./set-password.component.scss'],
 })
+
 export class SetPasswordComponent implements OnInit {
     setPassword: FormGroup<{
       password:FormControl;
@@ -58,4 +63,5 @@ export class SetPasswordComponent implements OnInit {
 
 
   
+
 }

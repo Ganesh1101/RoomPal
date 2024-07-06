@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
     ]),
    password: new FormControl('',[Validators.required, 
      Validators.minLength(6), 
+
      Validators.maxLength(16)
+
     ])
   });
   
@@ -47,7 +49,9 @@ export class LoginComponent implements OnInit {
       return null;
     }
     if (value.length <= 1 && value.length < 6) return { minlength: true };
+
     if (value.length > 16) return { maxlength: true };
+
     return null;
   }
   
@@ -57,8 +61,10 @@ export class LoginComponent implements OnInit {
 
   onLoginClick() {
     this.loginFormGroup.markAllAsTouched();
+
     console.log(this.loginFormGroup.value);
      console.log(this.loginFormGroup.controls);
+
   
   }
 }

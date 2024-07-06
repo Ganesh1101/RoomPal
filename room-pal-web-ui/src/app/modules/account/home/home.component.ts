@@ -10,5 +10,7 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   onNextClick() {
     console.log('Next button clicked');
+
   }
+
 }
