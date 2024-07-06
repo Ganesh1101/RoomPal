@@ -4,7 +4,7 @@
   padding: 60px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.854);
-  width: 45%;
+  max-width: 40%;
   margin: auto;
   font-size: 25px;
 
@@ -133,7 +133,7 @@ font-size: 22px;
 
 @media (min-width: 992px) and (max-width: 1199px) {
 .card {
-width: 45%;
+width: 50%;
 
 }
 .logo {
@@ -202,7 +202,7 @@ font-size: 18px;
 @media (min-width: 576px) and (max-width: 767px) {
 .card {
 
-width: 55%;
+width: 50%;
 }
 .logo {
 width: 50%;
@@ -238,7 +238,7 @@ font-size: 16px;
 
 @media (max-width: 575px) {
 .card {
-width: 60%;
+width: 50%;
 }
 .logo {
 width: 95%;
@@ -275,7 +275,7 @@ font-size: 14px;
 }
 @media (max-width:480px){
   .card {
-    width: 60%;
+    width: 50%;
     }
     .logo {
     width: 95%;
