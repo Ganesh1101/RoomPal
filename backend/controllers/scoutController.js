@@ -1,6 +1,7 @@
 const Scout = require('../models/scoutsModel');
 
 const ScoutRegister = async (req, res) => {
+
   try {
     let {
       fullName,
@@ -57,16 +58,17 @@ const getAllScouts = async (req, res) => {
         const pageNumber = parseInt(req.query.page) || 1;
         const count = await Scout.countDocuments();
         const totalPages = Math.ceil(count / recLimit);
-        const roomsList = await Scout.find()
+        const ScoutsList = await Scout.find()
             .skip((pageNumber - 1) * recLimit)
             .limit(recLimit)
             .lean();
-
+            
         res.status(200).json({
             success: true,
             totalPages,
             totalCount: count,
-            data: roomsList
+            data:  ScoutsList
+
         });
     } catch (error) {
         res.status(500).json(baseResponses.error(error.message));
