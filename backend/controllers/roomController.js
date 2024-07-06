@@ -20,6 +20,10 @@ const roomCreation = async (req, res) => {
     if (!roomName || !details || availability === undefined || !roomType || !floor || !rent || !amenities || gender === undefined) { 
       return res.status(400).json(baseResponses.constantMessages.ALL_FIELDS_REQUIRED());
     }
+    const room = await Room.findOne({ roomName : roomName });
+    if(room){
+      return res.status(400).json(baseResponses.constantMessages.ROOM_NAME_ALREADY_EXIST());
+    }
     const newRoom = new Room({
       roomName,
       details,
@@ -34,8 +38,6 @@ const roomCreation = async (req, res) => {
       whatsappLink,
       telegramLink
     });
-
-
     await newRoom.save();
     res.status(200).json(baseResponses.constantMessages.ROOM_CREATED_SUCCESSFULLY());
   } catch (error) {
@@ -158,6 +160,7 @@ const getRoomByName = async (req,res) => {
     if (!room) {
       return res.status(404).json(baseResponses.constantMessages.ROOM_NOT_FOUND());
     }
+    
     return res.status(200).json(baseResponses.constantMessages.ROOM_FETCHED(room));
   } catch (error) {
     console.log(error);
