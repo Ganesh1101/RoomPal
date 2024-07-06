@@ -1,171 +1,312 @@
-
-
-.contain{
+.container1{
   background-color: #f3ebff;
 }
 .card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 30px;
-  justify-content: space-between;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.854);
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.854);
+    width: 35%;
+    margin: auto;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+  }
+  
+  .logo {
+    width: 60%;
+    height: 19vh;
+    margin: auto;
+  }
+  
+  h1 {
+    color: #6b23d4;
+  }
+  
+  h3 {
+    color: #6b23d4;
+    font-size: 21px;
+    text-align: left;
+    padding: 13px;
+  }
+  
+  ::placeholder {
+    font-size: larger;
+  }
+  
+  #dateOfBirth {
+    font-size: 20px;
+    color: rgb(99, 103, 106);
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .gender,
+  .text {
+    display: flex;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  
+  .question {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 0px;
+  }
+  
+  .input-hidden {
+    display: none;
+  }
+  
+  #button1 + .btn,
+  #button3 + .btn,
+  #button2 + .btn,
+  #button4 + .btn {
+    background-color: #6b23d4;
+  }
+  
+  #button1:checked + .btn,
+  #button3:checked + .btn,
+  #button2:checked + .btn,
+  #button4:checked + .btn {
+    background-color: #d3b5ff;
+    color: #000000;
+  }
+  
+  .btn {
+    border-radius: 50px;
+    width: 20%;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, border 0.3s;
+    color: #ffffff;
+  }
+  
+  .checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.5);
+    margin: 10px;
+  }
+  
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin: 10px;
+  }
+  
+  .checkbox label {
+    flex: 1 1 45%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  button {
+    background-color: #6b23d4;
+    color: white;
+    border: none;
+    padding: 1px;
+    cursor: pointer;
+    width: 100%;
+    height: 6vh;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 4%;
+  }
+  
+  button:hover {
+    background-color: #5600d7;
+    color: #ffffff;
+  }
+  p{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  a {
+    color: #6b23d4;
+    text-decoration: none;
+  }
+  
+  span {
+    top: 10px;
+    font-size: 25px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+
+
+
+
+  
+  @media screen and  (min-width: 992px) and (max-width: 1199px) {
+  .card {
   width: 45%;
-  margin: auto;
-  font-size: 21px;
-  margin-top: 20px;
-  margin-bottom: 20px;
 
+  }
+  .logo {
+
+   height: 18vh;
+  }
+
+  .input-field {
+
+  padding: 18px;
+  }
+  .button-group {
+  gap: 18px;
+  }
+  .btn {
+    padding: 12px;
+  }
+
+  button {
+  height: 6.5vh;
+  }
 }
+  
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+  .card {
+  width: 50%;
+  }
 
-.logo {
+  .logo {
+  height: 16vh;
+  }
+
+  .input-field {
+
+  padding: 15px;
+
+  }
+  .button-group {
+  gap: 15px;
+  }
+
+  .btn {
+  padding: 10px 2px;
+  }
+  button {
+  height: 6vh;
+  }
+  }
+  
+  @media screen and (min-width: 576px) and (max-width: 767px) {
+  .card {
   width: 60%;
-  height: 19vh;
-  margin: auto;
+
+  }
+  
+  .logo {
+  height: 14vh;
+  
 }
+  .input-field {
+  padding: 12px;
 
-h1 {
-  color: #6b23d4;
 }
+  .button-group {
 
-h3 {
-  color: #6b23d4;
-  font-size: 28px;
-  text-align: left;
-  padding: 13px;
+    gap: 12px;
+  }
+  .btn {
+  padding: 8px 15px;
+  }
+  button {
+  height: 5.5vh;
+  }
+  }
+
+  
+  @media screen and (max-width: 575px) {
+  .card {
+  
+    width: 70%;
+  }
+  .logo {
+  height: 12vh;
+  
 }
+  .input-field {
 
-::placeholder {
-  font-size: larger;
+
+    padding: 10px;
+  }
+  .button-group {
+
+    gap: 10px;
+  }
+  ::placeholder{
+
+    font-size: smaller;
+  }
+  .btn {
+  padding: 6px ;
+
 }
+  button {
+  height: 5vh;
+  }
 
-#dateOfBirth {
-  font-size: 20px;
-  color: rgb(99, 103, 106);
 }
+  @media screen and (max-width:415px) {
 
-.input-field {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #000000;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+    .card {
+    width: 70%;
+    }
+   .logo {
+    height: 10vh;
+    }
+    h1{
+      font-size: 20px;
+    }
+   .input-field {
+    padding: 2px;
+    }
 
-.gender,
-.text {
-  display: flex;
-}
+    .button-group {
+    gap: 8px;
+    }
+    
+    ::placeholder{
+      font-size: smaller;
+    }
+   .btn {
+    padding: 1px;
 
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-}
-
-.question {
-  display: flex;
-  flex-direction: column;
-}
-
-.button-group {
-  display: flex;
-  gap: 0px;
-}
-
-.input-hidden {
-  display: none;
-}
-
-#button1 + .btn,
-#button3 + .btn,
-#button2 + .btn,
-#button4 + .btn {
-  background-color: #6b23d4;
-}
-
-#button1:checked + .btn,
-#button3:checked + .btn,
-#button2:checked + .btn,
-#button4:checked + .btn {
-  background-color: #d3b5ff;
-  color: #000000;
-}
-
-.btn {
-  border-radius: 50px;
-  width: 20%;
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  border: 1px solid transparent;
-  transition: background-color 0.3s, border 0.3s;
-  color: #ffffff;
-}
-
-.checkbox {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0px;
-}
-
-input[type="checkbox"] {
-  transform: scale(1.5);
-  margin: 10px;
-}
-
-input[type="radio"] {
-  transform: scale(1.5);
-  margin: 10px;
-}
-
-.checkbox label {
-  flex: 1 1 45%;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-button {
-  background-color: #6b23d4;
-  color: white;
-  border: none;
-  padding: 15px;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 5px;
-  font-size: 20px;
-}
-
-button:hover {
-  background-color: #b98aff;
-  color: #000;
-}
-
-a {
-  color: #6b23d4;
-  text-decoration: none;
-  position: relative;
-}
-
-span {
-  top: 10px;
-  font-size: 25px;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.error {
-  color: red;
-  font-size: 14px;
-  text-align: left;
-  border: 1px solid red;
-}
-
-
+  }
+    button {
+    height: 4vh;
+    }
+    }

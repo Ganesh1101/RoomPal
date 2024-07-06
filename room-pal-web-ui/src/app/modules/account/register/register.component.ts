@@ -5,9 +5,8 @@ import {  AbstractControl,
   FormGroup,
   ReactiveFormsModule,
   ValidationErrors,
-
-
   Validators } from '@angular/forms';
+  import intlTelInput from 'intl-tel-input';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +16,6 @@ import {  AbstractControl,
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
-
   registrationForm: FormGroup<{
     mobileNumber:FormControl;
     password:FormControl;
@@ -69,6 +67,19 @@ export class RegisterComponent implements OnInit {
   }
  
   ngOnInit(): void {
+    const element = document.getElementById('phone');
+    const inputElement = element as HTMLInputElement;
+    
+
+    if (inputElement){
+      intlTelInput(inputElement,{
+        initialCountry: 'in',
+        separateDialCode: true,
+        utilsScript:'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.0/js/utils.js'
+      })
+    }else {
+      console.error('The element is not an HTMLInputElement');
+    }
   }
 
 
@@ -80,6 +91,4 @@ export class RegisterComponent implements OnInit {
   }
 
  
-
 }
-
