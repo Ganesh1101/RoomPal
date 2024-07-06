@@ -1,4 +1,5 @@
 
+
 <div class="contain">
 <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginClick()">
   <div class="login-screen">
@@ -12,6 +13,7 @@
          formControlName="mobileNumber"
          [ngClass]="loginFormGroup.controls['mobileNumber'].errors &&
          loginFormGroup.controls['mobileNumber'].touched? 'is-invalid' : ''   "/>
+
 
 
 
@@ -50,6 +52,7 @@
               loginFormGroup.controls["password"].touched
               ){
 
+
             @if (loginFormGroup.controls["password"].errors["required"]) {
               <div class="invalid-feedback">Password is required</div>
              }
@@ -60,6 +63,7 @@
             @if (loginFormGroup.controls["password"].errors["maxlength"]) {
               <div class="invalid-feedback">Maximum 20 characters allowed..</div>
             }
+
             }
         <!-- <pre>{{loginFormGroup.controls["password"].errors | json}}</pre> -->
   
@@ -76,5 +80,7 @@
       </div>
     </div>
 
+
   </form>
+
 

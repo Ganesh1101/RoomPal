@@ -11,6 +11,8 @@ export class HomeComponent {
   onNextClick() {
     console.log('Next button clicked');
 
+
   }
+
 
 }

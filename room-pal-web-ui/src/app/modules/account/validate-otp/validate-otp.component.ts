@@ -1,20 +1,25 @@
 
 
 
+
 import { NgClass } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 
 
 @Component({
   selector: 'app-validate-otp',
   standalone: true,
 
+
   imports: [ReactiveFormsModule,NgClass],
+
 
   templateUrl: './validate-otp.component.html',
   styleUrls: ['./validate-otp.component.scss']
 })
+
 
 
 export class ValidateOtpComponent implements OnInit {
@@ -41,5 +46,18 @@ onSubmit(): void {
          console.log('Resend OTP clicked');
       }
     
+
+
+  otpForm: FormGroup<{
+    otp:FormControl;
+  }> = new FormGroup({
+    otp: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(6),
+      Validators.pattern('^[0-9]*$')
+    ])
+  })
+
 
 }

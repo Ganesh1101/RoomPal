@@ -5,6 +5,7 @@ const accountRoutes = () =>
   import('./modules/account/account.routes').then(r => r.routes)
 
 
+
 const dashboardRoutes = () =>
   import ('./modules/dashboard/dashbord.routes').then(r => r.routes)
 
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'account', loadChildren: accountRoutes },
 
   { path:'dashboard', loadChildren: dashboardRoutes}
+
 
 ]

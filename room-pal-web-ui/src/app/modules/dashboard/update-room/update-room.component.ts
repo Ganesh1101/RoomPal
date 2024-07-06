@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
     selector:'app-update-room',
     standalone:true,
 
+
     imports:[],
     templateUrl:'./update-room.component.html',
     styleUrl:'./update-room.component.scss'
@@ -13,3 +14,4 @@ export class UpdateRoomComponent{
     
 
 }
+

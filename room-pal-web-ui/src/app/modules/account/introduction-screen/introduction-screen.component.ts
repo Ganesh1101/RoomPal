@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 
+
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   standalone: true,
 
   imports: [CommonModule,ReactiveFormsModule],
+
 
   templateUrl: './introduction-screen.component.html',
   styleUrl: './introduction-screen.component.scss'

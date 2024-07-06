@@ -1,5 +1,7 @@
 .welcome-screen {
 
+
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,13 +26,17 @@
   h1{
     color: #6b23d4;
     font-size: 24px;
+
     margin-bottom: 10px;
+
   }
   
   h3 {
     color: #555;
     font-size: 18px;
+
     margin-bottom: 20px;
+
   }
   
   .next-button {
@@ -48,5 +54,7 @@
   .next-button:hover {
     background-color: #5821b7;
   }
+
   
+
 

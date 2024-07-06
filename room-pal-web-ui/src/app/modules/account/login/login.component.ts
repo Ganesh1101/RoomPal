@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
+
 import { NgClass,JsonPipe  } from '@angular/common';
+
 import {  AbstractControl,
   FormControl,
   FormGroup,
@@ -27,11 +29,15 @@ export class LoginComponent implements OnInit {
    password: new FormControl('',[Validators.required, 
      Validators.minLength(6), 
 
+
      Validators.maxLength(16)
+
 
     ])
   });
   
+
+
 
   mobileNumberValidator(control: AbstractControl): ValidationErrors | null {
     const value = new String(control.value).trim();
@@ -50,9 +56,11 @@ export class LoginComponent implements OnInit {
     }
     if (value.length <= 1 && value.length < 6) return { minlength: true };
 
+
     if (value.length > 16) return { maxlength: true };
 
     return null;
+
   }
   
   ngOnInit(): void {

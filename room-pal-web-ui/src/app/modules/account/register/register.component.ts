@@ -5,6 +5,8 @@ import {  AbstractControl,
   FormGroup,
   ReactiveFormsModule,
   ValidationErrors,
+
+
   Validators } from '@angular/forms';
 
 @Component({
@@ -15,6 +17,7 @@ import {  AbstractControl,
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
+
   registrationForm: FormGroup<{
     mobileNumber:FormControl;
     password:FormControl;
@@ -77,4 +80,6 @@ export class RegisterComponent implements OnInit {
   }
 
  
+
 }
+

@@ -1,10 +1,13 @@
 <div class="otp-container">
 
+
+
   <img src="images/logo.jpg" alt="Logo" class="logo"/>
   <p>Please enter the OTP sent to your registered email address.</p>
   <form (ngSubmit)="onSubmit()" [formGroup]="otpForm">
     <div class="form-group">
       <h2>OTP</h2>
+
       <input formControlName="otp" placeholder="Enter OTP" class="input-field"
       [ngClass]="otpForm.controls['otp'].errors &&
          otpForm.controls['otp'].touched? 'is-invalid' : ''   "/>
@@ -34,4 +37,6 @@
     <a href="#" (click)="resendOTP($event)">Resend OTP</a>
   </p>
 </div>
+
+
 

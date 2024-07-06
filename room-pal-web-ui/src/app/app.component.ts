@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 
+
 import { ItemComponent } from './items/item/item.component';
 import { LoginComponent } from './modules/account/login/login.component';
 // import { pipe } from 'rxjs';
@@ -19,9 +20,11 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
+
 
   imports: [RouterOutlet,
             LoginComponent,
@@ -34,6 +37,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
             WelcomeScreenComponent,
             IntroductionScreenComponent,
             SetPasswordComponent ],
+
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
