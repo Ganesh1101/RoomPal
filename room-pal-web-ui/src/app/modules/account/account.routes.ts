@@ -42,15 +42,7 @@ const ValidateOtpComponent = () =>
 
 
 
-  const WelcomeScreenComponent = () =>
-  import('./welcome-screen/welcome-screen.component').then(
-    c => c.WelcomeScreenComponent
-  )
-
-  const IntroductionScreenComponent = () =>
-    import('./introduction-screen/introduction-screen.component').then(
-      c => c.IntroductionScreenComponent
-    )
+  
    
 
 //    const = HomeComponent()=>

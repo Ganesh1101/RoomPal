@@ -23,11 +23,18 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 
 export class ValidateOtpComponent implements OnInit {
-  otpForm: FormGroup= new FormGroup ({
-    otp:new FormControl('',[Validators.required,
-                           Validators.minLength(6),
-                            Validators.maxLength(6)])
-  });
+  
+
+  otpForm: FormGroup<{
+    otp:FormControl;
+  }> = new FormGroup({
+    otp: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(6),
+      Validators.pattern('^[0-9]*$')
+    ])
+  })
 
 
 ngOnInit(): void {
@@ -47,17 +54,6 @@ onSubmit(): void {
       }
     
 
-
-  otpForm: FormGroup<{
-    otp:FormControl;
-  }> = new FormGroup({
-    otp: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(6),
-      Validators.pattern('^[0-9]*$')
-    ])
-  })
 
 
 }
