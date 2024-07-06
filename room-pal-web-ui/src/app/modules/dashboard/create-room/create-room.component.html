@@ -1,142 +1,3 @@
-<!-- <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
-  <div class="card">
-    <img src="images/logo.jpg" alt="Logo" class="logo"/>
-
-    <div>
-      <h2>Room Name</h2>
-      <input formControlName="roomName" placeholder="Enter Room Name">
-      <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-        <div *ngIf="roomName.errors.required">
-          Room Name is required.
-        </div>
-      </div>
-    </div>
-    
-    <div>
-      <h2>Description</h2>
-      <textarea id="description" formControlName="description" placeholder="Room Description"></textarea>
-      <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-        <div *ngIf="roomName.errors.required">
-        description is required
-        </div>
-      </div>
-    </div>
-    
-    <div>
-      <h2>Capacity</h2>
-      <input id="capacity" type="number" formControlName="capacity">
-      <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-        <div *ngIf="roomName.errors.required">
-         capacity is required.
-        </div>
-      </div>
-     
-    </div>
-    
-    <div>
-      <h2>WhatsApp Link</h2>
-      <input id="whatsappLink" formControlName="whatsappLink" placeholder="WhatsApp Link">
-      
-      </div>
-    </div>
-    
-    <div>
-      <h2>Telegram Link</h2>
-      <input id="telegramLink" formControlName="telegramLink" placeholder="Telegram Link">
-    
-      </div>
-
-    
-    <div>
-      <h2>Amenities</h2>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" formControlName="amenity1"><img src="images/wifi.jpg"> Wifi
-        </label>
-        <label>
-          <input type="checkbox" formControlName="amenity2"><img src="images/freezer.jpg">Kitchen
-        </label>
-        <label>
-          <input type="checkbox" formControlName="amenity3"> <img src="images/air-conditioner.jpg">AC
-        </label>
-        <label>
-          <input type="checkbox" formControlName="amenity3"> <img src="images/bathroom.jpg">Bathroom
-        </label>
-        <label>
-          <input type="checkbox" formControlName="amenity3"> <img src="images/parked-car.jpg">Parking
-        </label>
-      </div>
-    </div>
-    <div>
-      <h2>Address</h2>
-       <textarea name="" id="" cols="30" rows="5" placeholder="Enter Your Address"></textarea>
-      
-      </div>
- 
-    
-    <div>
-      <h2>Location</h2>
-      <input id="location" formControlName="location">
-      <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-        <div *ngIf="roomName.errors.required">
-        Location is required.
-        </div>
-      </div>
-    </div>
-    
-   
-    <div>
-      <h2>Room Images</h2>
-      <input id="roomImages" type="file"  >
-      <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-        <div *ngIf="roomName.errors.required">
-          Room Name is required.
-        </div>
-      </div>
-      </div>
-
-      <div formArrayName="roomImages">
-        <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-          <div *ngIf="roomName.errors.required">
-            Room Name is required.
-          </div>
-        </div>
-      </div>
-    
-    
-    <div>
-      <h2>Rent</h2>
-      <input id="rent" type="number" formControlName="rent">
-      <div *ngIf="roomName.invalid && (roomName.dirty || roomName.touched)">
-        <div *ngIf="roomName.errors.required">
-          Room Name is required.
-        </div>
-      </div>
-      </div>
-  
-    
-    <div>
-      <h2>Preferences</h2>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" formControlName="preference1" class="veg">Veg
-        </label>
-        <label>
-          <input type="checkbox" formControlName="preference2">Nonveg
-        </label>
-        <label>
-          <input type="checkbox" formControlName="preference3">Smoking
-        </label>
-        <label>
-          <input type="checkbox" formControlName="preference4">Drinking
-        </label>
-      </div>
-    </div>
-    
-
-    <button type="submit" [disabled]="roomForm.invalid">Create Room</button>
-
-</form> -->
 
 <form [formGroup]="createRoomForm" (ngSubmit)="onSubmit()">
   <div class="card">
@@ -170,16 +31,15 @@
 
 
       @if(createRoomForm.controls['description'].errors["required"]){
-      <div class="invalid-feedback" > description require</div>
+      <div class="invalid-feedback"> description require</div>
       }
 
       }
     </div>
 
- <div>
+    <div>
       <h2>Capacity</h2>
-      <input id="capacity" type="number" formControlName="capacity" 
-      [ngClass]="createRoomForm.controls['capacity'].errors &&
+      <input id="capacity" type="number" formControlName="capacity" [ngClass]="createRoomForm.controls['capacity'].errors &&
         createRoomForm.controls['capacity'].touched? 'is-invalid' : ''   " />
 
       @if(
@@ -193,46 +53,88 @@
 
       }
     </div>
-    
-     <div>
+
+    <div>
       <h2>WhatsApp Link</h2>
-      <input id="whatsappLink" formControlName="whatsappLink" placeholder="WhatsApp Link"
-      [ngClass]="createRoomForm.controls['whatsappLink'].errors &&
+
+      <div class="WhatsApp">
+
+        <i class="fa-brands fa-square-whatsapp"></i>
+        </div>
+
+        <input id="whatsappLink" formControlName="whatsappLink" placeholder="WhatsApp Link" [ngClass]="createRoomForm.controls['whatsappLink'].errors &&
       createRoomForm.controls['whatsappLink'].touched? 'is-invalid' : ''   " />
+   
+  
+        @if(
+        createRoomForm.controls['whatsappLink'].errors &&
+        createRoomForm.controls['whatsappLink'].touched ){
 
-    @if(
-    createRoomForm.controls['whatsappLink'].errors &&
-    createRoomForm.controls['whatsappLink'].touched ){
 
+        @if(createRoomForm.controls['whatsappLink'].errors["required"]){
+        <div class="invalid-feedback">link must be required</div>
+        }
 
-    @if(createRoomForm.controls['whatsappLink'].errors["required"]){
-    <div class="invalid-feedback">link must be required</div>
-    }
-
-    }
-  </div>
+        }
     
-     <div>
+      </div>
+   
+      
+
+
+      
+
+<!-- 
+      <div>
+        <h2>WhatsApp Link</h2>
+        <div class="WhatsApp">
+          <i class="fa-brands fa-square-whatsapp"></i>
+       
+          <input id="whatsappLink" formControlName="whatsappLink" placeholder="WhatsApp Link" >
+        </div>
+      
+       -->
+
+
+       <!-- <div>
+        <h2>WhatsApp Link</h2>
+        <div class="WhatsApp">
+          <i class="fa-brands fa-square-whatsapp"></i> -->
+          <!-- <i class="fa-brands fa-whatsapp"></i>
+ 
+          <input id="whatsappLink" formControlName="whatsappLink" placeholder="WhatsApp Link" />
+      
+        </div> -->
+
+    <div>
       <h2>Telegram Link</h2>
-      <input  class = "color" type="" id="telegramLink" formControlName="telegramLink" placeholder="Telegram Link"   [ngClass]="createRoomForm.controls['whatsappLink'].errors &&
+      <div class="telegram">
+        <i class="fa-brands fa-telegram"> </i>
+    
+      <input class="color" type="" id="telegramLink" formControlName="telegramLink" placeholder="Telegram Link"
+        [ngClass]="createRoomForm.controls['whatsappLink'].errors &&
       createRoomForm.controls['whatsappLink'].touched? 'is-invalid' : ''   " />
 
-    @if(
-    createRoomForm.controls['whatsappLink'].errors &&
-    createRoomForm.controls['whatsappLink'].touched ){
+</div>
+
+      @if(
+      createRoomForm.controls['whatsappLink'].errors &&
+      createRoomForm.controls['whatsappLink'].touched ){
 
 
-    @if(createRoomForm.controls['whatsappLink'].errors["required"]){
-    <div class="invalid-feedback">link must be required</div>
-    }
+      @if(createRoomForm.controls['whatsappLink'].errors["required"]){
+      <div class="invalid-feedback">link must be required</div>
+      }
 
-    }
-  </div>
-     <div>
+      }
+
+    </div>
+
+    <div>
       <h2>Amenities</h2>
       <div class="checkbox">
         <label>
-          <input  type="checkbox" formControlName="amenity1"><img src="images/wifi.jpg"> Wifi
+          <input type="checkbox" formControlName="amenity1"><img src="images/wifi.jpg"> Wifi
         </label>
         <!-- {{createRoomForm.value|json}} -->
         <!-- @if (submitted){
@@ -240,11 +142,11 @@
             <p>submitted:{{createRoomForm|json}}</p>
             </div>
         } -->
-            
+
         <!-- {{createRoomForm.value|json}} -->
 
 
-        
+
         <label>
           <input type="checkbox" formControlName="amenity2"><img src="images/freezer.jpg">Kitchen
         </label>
@@ -260,71 +162,71 @@
       </div>
     </div>
 
-    
+
 
     <div>
       <h2>Address</h2>
-       <input name="address"   formControlName="address" cols="30" rows="5" placeholder="Enter Your Address" [ngClass]="createRoomForm.controls['address'].errors &&
+      <input name="address" formControlName="address" cols="30" rows="5" placeholder="Enter Your Address" [ngClass]="createRoomForm.controls['address'].errors &&
        createRoomForm.controls['address'].touched? 'is-invalid' : ''   " />
 
-     @if(
-     createRoomForm.controls['address'].errors &&
-     createRoomForm.controls['address'].touched ){
+      @if(
+      createRoomForm.controls['address'].errors &&
+      createRoomForm.controls['address'].touched ){
 
 
-     @if(createRoomForm.controls['address'].errors["required"]){
-     <div class="invalid-feedback">Address must be required</div>
-     }
+      @if(createRoomForm.controls['address'].errors["required"]){
+      <div class="invalid-feedback">Address must be required</div>
+      }
 
-     }
-   </div>
-      
- 
-   <div>
+      }
+    </div>
+
+
+    <div>
       <h2>Location</h2>
       <input id="location" formControlName="location" [ngClass]="createRoomForm.controls['address'].errors &&
-      createRoomForm.controls['address'].touched? 'is-invalid' : ''   "/>
-    
-
-    @if(
-    createRoomForm.controls['address'].errors &&
-    createRoomForm.controls['address'].touched ){
+      createRoomForm.controls['address'].touched? 'is-invalid' : ''   " />
 
 
-    @if(createRoomForm.controls['address'].errors["required"]){
-    <div class="invalid-feedback">Location is  required</div>
-    }
+      @if(
+      createRoomForm.controls['address'].errors &&
+      createRoomForm.controls['address'].touched ){
 
-    }
-  </div>
 
- <div>
+      @if(createRoomForm.controls['address'].errors["required"]){
+      <div class="invalid-feedback">Location is required</div>
+      }
+
+      }
+    </div>
+
+    <div>
       <h2>Room Images</h2>
       <input id="roomImages" type="file" multiple>
       <div formArrayName="roomImages">
-        </div>
       </div>
-  
-  <div>
+    </div>
+
+    <div>
       <h2>Rent</h2>
       <input id="rent" type="number" formControlName="rent" [ngClass]="createRoomForm.controls['rent'].errors &&
       createRoomForm.controls['address'].touched? 'is-invalid' : ''   " />
 
-    @if(
-    createRoomForm.controls['rent'].errors &&
-    createRoomForm.controls['rent'].touched ){
+      @if(
+      createRoomForm.controls['rent'].errors &&
+      createRoomForm.controls['rent'].touched ){
 
 
-    @if(createRoomForm.controls['rent'].errors["required"]){
-    <div class="invalid-feedback">rent must be  required</div>
-    }
+      @if(createRoomForm.controls['rent'].errors["required"]){
+      <div class="invalid-feedback">rent must be required</div>
+      }
 
-    }
-  </div>
+      }
+    </div>
 
-    
 
-     <div>
+
+    <div>
       <h2>Preferences</h2>
       <div class="checkbox">
         <label>
@@ -341,8 +243,7 @@
         </label>
       </div>
     </div>
-    
+
     <button [disabled]="!createRoomForm.valid" type="submit">Create Room</button>
   </div>
-  
-</form>
+
