@@ -12,6 +12,8 @@ import {
   Platform,
   Linking,
 } from 'react-native';
+import { setAccessToken } from 'react-native-mapbox-gl';
+
 import CheckBox from '@react-native-community/checkbox';
 import Slider from 'react-native-slider';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -27,6 +29,7 @@ import { RadioButton } from 'react-native-paper';
 import RNFS from 'react-native-fs';
 import MapView, { Marker } from 'react-native-maps';
 
+setAccessToken('YOUR_MAPBOX_TOKEN');
 
 const RoomCreateScreen = ({ setTabBarVisibility }) => {
   const dispatch = useDispatch();
@@ -208,9 +211,10 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
     }
   };
   const handleMapPress = (event) => {
-    const coordinate = event.nativeEvent.coordinate;
+    const coordinate = event.geometry.coordinates;
     setLocation(coordinate);
   };
+  
   // const captureLocation = async () => {
   //   const hasPermission = await requestLocationPermission();
   //   if (!hasPermission) {
@@ -529,18 +533,14 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
 
       <View style={styles.inputGroup}>
       <Text style={styles.label}>Location</Text>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}
-        onPress={handleMapPress}
-      >
-        <Marker coordinate={location} />
-      </MapView>
+      <MapboxGL style={styles.map} initialRegion={{
+  latitude: 37.78825,
+  longitude: -122.4324,
+  latitudeDelta: 0.015,
+  longitudeDelta: 0.0121,
+}} onPress={handleMapPress}>
+  <MapboxGL.Marker coordinate={location} />
+</MapboxGL>
 
         <Text style={{ color: '#814ABF' }}>{location ? location : 'No location selected'}</Text>
         <TeamXErrorText errorText={locationError} />
