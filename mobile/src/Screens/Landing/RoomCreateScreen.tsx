@@ -25,6 +25,7 @@ import { useDispatch } from 'react-redux';
 import { createRoom } from '../../reducers/room/roomSlice';
 import { RadioButton } from 'react-native-paper';
 import RNFS from 'react-native-fs';
+import MapView, { Marker } from 'react-native-maps';
 
 
 const RoomCreateScreen = ({ setTabBarVisibility }) => {
@@ -206,31 +207,34 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
       return false;
     }
   };
-
-  const captureLocation = async () => {
-    const hasPermission = await requestLocationPermission();
-    if (!hasPermission) {
-      Alert.alert(
-        'Permission Denied',
-        'Location permission is required to capture your location.',
-      );
-      return;
-    }
-
-    Geolocation.getCurrentPosition(
-      position => {
-        const { latitude, longitude } = position.coords;
-        const locationString = `${latitude}, ${longitude}`;
-        console.log('Location fetched:', locationString); // Log the fetched location
-        setLocation(locationString);
-      },
-      error => {
-        Alert.alert('Error', 'Unable to retrieve your location.');
-        console.error(error);
-      },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
-    );
+  const handleMapPress = (event) => {
+    const coordinate = event.nativeEvent.coordinate;
+    setLocation(coordinate);
   };
+  // const captureLocation = async () => {
+  //   const hasPermission = await requestLocationPermission();
+  //   if (!hasPermission) {
+  //     Alert.alert(
+  //       'Permission Denied',
+  //       'Location permission is required to capture your location.',
+  //     );
+     
+  //   }
+
+  //   Geolocation.getCurrentPosition(
+  //     position => {
+  //       const { latitude, longitude } = position.coords;
+  //       const locationString = `${latitude}, ${longitude}`;
+  //       console.log('Location fetched:', locationString); // Log the fetched location
+  //       setLocation(locationString);
+  //     },
+  //     error => {
+  //       Alert.alert('Error', 'Unable to retrieve your location.');
+  //       console.error(error);
+  //     },
+  //     { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+  //   );
+  // };
   const handleAmenityChange = index => {
     const updatedAmenities = [...amenities];
     updatedAmenities[index].checked = !updatedAmenities[index].checked;
@@ -524,13 +528,19 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
       </View>
 
       <View style={styles.inputGroup}>
-        <Text style={styles.label}>Location</Text>
-        <TouchableOpacity
-          style={[styles.button, { marginBottom: 10, width: 150, height: 40 }]}
-          onPress={captureLocation}
-        >
-          <Text style={[styles.buttonText, { fontSize: 14 }]}>Capture Location</Text>
-        </TouchableOpacity>
+      <Text style={styles.label}>Location</Text>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        }}
+        onPress={handleMapPress}
+      >
+        <Marker coordinate={location} />
+      </MapView>
 
         <Text style={{ color: '#814ABF' }}>{location ? location : 'No location selected'}</Text>
         <TeamXErrorText errorText={locationError} />

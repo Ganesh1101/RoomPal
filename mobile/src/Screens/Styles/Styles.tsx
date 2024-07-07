@@ -302,6 +302,11 @@ const styles = StyleSheet.create({
     padding: 5,
     left:-15
 },
+map: {
+  width: '100%',
+  height: 200,
+  marginBottom: 16,
+},
 name: {
   fontSize: 18,
   fontWeight: 'bold',
