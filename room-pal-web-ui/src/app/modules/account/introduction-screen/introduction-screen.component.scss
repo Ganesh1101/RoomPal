@@ -9,7 +9,7 @@
 .card {
   background-color: white;
   border-radius: 8px;
-  padding: 100px;
+  padding: 90px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -48,96 +48,34 @@ h3 {
   background-color: #5821b7;
 }
 
-/* media queries*/
 
-
-@media (min-width: 992px) and (max-width: 1199px){
-.welcome-screen{
-  width:100%;
-}
-.card {
-  padding: 100px;
-}
-.image {
-  height: 35vh;
-}
-}
-
-@media (min-width: 768px) and (max-width: 991px){
-.welcome-screen {
-  width: 100%;
-
-}
-.card {
-
-  padding: 80px;
-}
-
-.image {
-  height: 30vh;
-}
-
-}
-
-@media (min-width: 576px) and (max-width: 767px){
-.welcome-screen {
-  width: 100%;
-}
-.card {
-  padding: 60px;
-}
-.image {
-  height: 25vh;
-}
-}
-
-@media (max-width: 575px){
-.welcome-screen {
-  width: 100%;
-
-}
-.card {
-  padding: 70px;
-}
-.image {
-  height: 20vh;
-
-}
-.next-button {
-  padding: 5px 10px;
-}
-}
-@media (max-width:400px){
-.welcome-screen {
-  width: 100%;
-}
-.card {
-  padding: 50px;
+@media (max-width:768px){
+  .card{
+     padding: 65px;
+     margin: 5%;
   }
-.image {
-  height: 20vh;
+  .image {
+     height: 25vh;
 
+   }
 }
-.next-button {
-  padding: 5px 10px;
-}
+@media (max-width:480px){
+  .card{
+     padding: 40px;
+     margin: 10%;
+   }
+  .image {
+     height: 20vh;
+     margin-top: 5px;
+   }
+   h1{
+     font-size: 20px;
+   }
+   h3{
+     font-size: 16px;
+   }
+   .next-button {
+      padding: 5px 10px;
+    }
 }
 
-@media (max-width:320px){
-.welcome-screen {
-  width: 100%;
-
-}
-.card {
-  padding: 40px;
-
-}
-
-.image {
-  height: 20vh;
-}
-.next-button {
-  padding: 5px 10px;
-
-}
-}

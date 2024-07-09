@@ -90,226 +90,67 @@
     width: 100%;
     height: 1vh;
   }
- 
-
-
-
-
-@media (min-width: 1200px) {
-.card {
-width: 40%;
-
-}
-.logo {
-width: 70%;
-height: 20vh;
-margin-top: -10%;
-
-margin-left: 15%;
-}
-input, textarea, button {
-
-font-size: 20px;
-}
-.checkbox [type="checkbox"] {
-transform: scale(1.8);
-
-}
-.checkbox img {
-height: 5vh;
-
-width: 3vw;
-
-
-}
-.checkbox label {
-font-size: 20px;
-}
-button {
-font-size: 22px;
-
-}
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-.card {
-width: 50%;
-
-}
-.logo {
-width: 60%;
-
-height: 18vh;
-margin-top: -9%;
-margin-left: 14%;
-}
-input, textarea, button {
-
-font-size: 18px;
-}
-.checkbox [type="checkbox"] {
-transform: scale(1.6);
-
-}
-.checkbox img {
-height: 4.5vh;
-width: 2.8vw;
-}
-.checkbox label {
-
-font-size: 18px;
-}
-button {
-font-size: 20px;
-}
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-
-.card {
-width: 50%;
-
-}
-.logo {
-width: 55%;
-height: 16vh;
-
-margin-top: -8%;
-margin-left: 13%;
-
-}
-input, textarea, button {
-
-font-size: 16px;
-}
-.checkbox [type="checkbox"] {
-
-transform: scale(1.4);
-}
-.checkbox img {
-height: 4vh;
-width: 2.5vw;
-
-}
-.checkbox label {
-font-size: 16px;
-}
-button {
-font-size: 18px;
-}
-}
-
-@media (min-width: 576px) and (max-width: 767px) {
-.card {
-
-width: 50%;
-}
-.logo {
-width: 50%;
-height: 14vh;
-
-margin-top: -7%;
-margin-left: 12%;
-
-}
-input, textarea, button {
-
-font-size: 14px;
-}
-
-.checkbox [type="checkbox"] {
-transform: scale(1.2);
-}
-.checkbox img {
-
-height: 3.5vh;
-width: 2.2vw;
-}
-.checkbox label {
-font-size: 14px;
-}
-button {
-
-font-size: 16px;
-}
-}
-
-
-
-@media (max-width: 575px) {
-.card {
-width: 50%;
-}
-.logo {
-width: 95%;
-
-height: 12vh;
-margin-top: -6%;
-margin-left: 9%;
-
-}
-input, textarea, button {
-font-size: 12px;
-}
-::placeholder{
-font-size: 15px;
-}
-.checkbox [type="checkbox"] {
-transform: scale(1.1);
-
-}
-.checkbox img {
-height: 3vh;
-width: 2vw;
-
-}
-.checkbox label {
-
-font-size: 12px;
-}
-
-button {
-font-size: 14px;
-
-}
-}
-@media (max-width:480px){
-  .card {
-    width: 50%;
+  @media (max-width:1200px){
+    
+    .card{
+      padding: 30px;
+      margin:  0% 25%;
+      max-width: 100%;
     }
-    .logo {
-    width: 95%;
+      .logo{
+        height: 17vh;
+        margin-top: -5%;
+        
+      }
+      .checkbox label{
+        font-size: 19px;
+      }
+    }
+    
   
-    height: 12vh;
-    margin-top: -6%;
-    margin-left: 9%;
-  
-    }
-    input, textarea, button {
-    font-size: 12px;
-    }
-    h2{
-      font-size: 15px;
-    }
-  ::placeholder{
-    font-size: 15px;
+
+@media (max-width:768px){
+  .card{
+    padding: 50px;
+    margin: 5% 15%;
+    max-width: 50%;
   }
-    .checkbox [type="checkbox"] {
-    transform: scale(1.1);
-  
-    }
-    .checkbox img {
-    height: 3vh;
-    width: 2vw;
-  
-    }
-    .checkbox label {
-  
-    font-size: 12px;
-    }
-  
-    button {
-    font-size: 14px;
-  
-    }
+  .logo{
+    height: 17vh;
+    margin-top: -10%;
+  }
+  input, textarea, button{
+    padding: 10px;
+  }
+  h2{
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  .checkbox label{
+    font-size: 17px;
+  }
 }
+@media (max-width: 480px){
+  .card{
+    padding: 40px;
+    margin: 10%;
+    max-width: 100%;
+  }
+  .logo{
+    height: 15vh;
+    margin-top: -12%;
+  }
+  input, textarea, button{
+    padding: 8px;
+  }
+  h2{
+    font-size: 17px;
+    margin: 10px 0;
+  }
+  ::placeholder{
+    font-size: 17px;
+  }
+  
+}
+
+

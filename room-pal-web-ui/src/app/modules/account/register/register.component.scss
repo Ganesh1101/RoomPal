@@ -110,6 +110,11 @@
     flex-wrap: wrap;
     gap: 0px;
   }
+  .checkbox1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
   
   input[type="checkbox"] {
     transform: scale(1.5);
@@ -164,149 +169,91 @@
   a:hover {
     text-decoration: underline;
   }
-
-
-
-
-
-  
-  @media screen and  (min-width: 992px) and (max-width: 1199px) {
-  .card {
-  width: 45%;
-
+  @media (max-width: 1200px) {
+    .card{
+       width: 400px;
   }
-  .logo {
-
-   height: 18vh;
-  }
-
-  .input-field {
-
-  padding: 18px;
-  }
-  .button-group {
-  gap: 18px;
-  }
-  .btn {
-    padding: 12px;
-  }
-
-  button {
-  height: 6.5vh;
-  }
+  .btn{
+    width: 30%;
+    padding:7px;
 }
-  
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-  .card {
-  width: 50%;
-  }
-
-  .logo {
-  height: 16vh;
-  }
-
-  .input-field {
-
-  padding: 15px;
-
-  }
-  .button-group {
-  gap: 15px;
-  }
-
-  .btn {
-  padding: 10px 2px;
-  }
-  button {
-  height: 6vh;
-  }
-  }
-  
-  @media screen and (min-width: 576px) and (max-width: 767px) {
-  .card {
-  width: 60%;
-
-  }
-  
-  .logo {
-  height: 14vh;
-  
+button{
+  height: 7vh;
 }
-  .input-field {
-  padding: 12px;
-
+.checkbox{
+  flex-direction: column;
 }
-  .button-group {
-
-    gap: 12px;
-  }
-  .btn {
-  padding: 8px 15px;
-  }
-  button {
-  height: 5.5vh;
-  }
-  }
-
-  
-  @media screen and (max-width: 575px) {
-  .card {
-  
-    width: 70%;
-  }
-  .logo {
-  height: 12vh;
-  
+   
 }
-  .input-field {
 
-
-    padding: 10px;
-  }
-  .button-group {
-
-    gap: 10px;
-  }
-  ::placeholder{
-
-    font-size: smaller;
-  }
-  .btn {
-  padding: 6px ;
-
-}
-  button {
-  height: 5vh;
-  }
-
-}
-  @media screen and (max-width:415px) {
-
-    .card {
-    width: 70%;
-    }
-   .logo {
-    height: 10vh;
-    }
-    h1{
-      font-size: 20px;
-    }
-   .input-field {
-    padding: 2px;
-    }
-
-    .button-group {
-    gap: 8px;
-    }
+@media (max-width: 768px) {
+   .card{
+       width: 370px;
     
-    ::placeholder{
-      font-size: smaller;
     }
-   .btn {
-    padding: 1px;
+   .logo{
+       width: 70%;
+       margin-top: 5%;
+    }
+    .input-field{
+       padding: 10px;
 
+    }
+    .btn{
+      width: 100%;
+      padding:7px;
   }
-    button {
-    height: 4vh;
+  button{
+    height: 7vh;
+  }
+    
+    
+}
+
+@media (max-width:480px){
+  
+   .card{
+      padding: 40px;
     }
+   .logo{
+       height: 20vh;
+       margin-top: -5%;
     }
+  .input-field{
+    padding: 9px;
+   }
+   ::placeholder{
+    font-size:medium;
+   }
+   .checkbox{
+    flex-direction: column;
+   }
+}
+@media (max-width:380px){
+  .card{
+     width: 300px;
+      padding: 30px;
+    }
+   .logo{
+       height: 15vh;
+       margin-top: -5%;
+    }
+  .input-field{
+    padding: 5px;
+   }
+   ::placeholder{
+    font-size: smaller;
+   }
+   button{
+    height: 6vh;
+   }
+   p,a{
+    font-size: 15px;
+   }
+   .checkbox label{
+    font-size: 15px;
+   }
+}
+
+
+

@@ -9,10 +9,11 @@
 .card {
   background-color: white;
   border-radius: 8px;
-  padding: 100px;
+  padding: 80px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 50vw;
+  width: 40vw;
+  height: 75vh;
 }
 
 .img {
@@ -48,88 +49,73 @@ h3 {
 .next-button:hover {
   background-color: #5821b7;
 }
-  
-  @media (min-width: 992px) and (max-width: 1199px){
-    .welcome-screen{
-      width:100%;
-      padding: 0 30px;
-    }
-    .card {
-      padding: 60px;
-      width: 70%;
-    }
-    .img {
-      height: 30vh;
-      margin-top: 5px;
-    }
-  }
-  
-  @media (min-width: 768px) and (max-width: 991px){
-    .welcome-screen {
-      width: 100%;
-      padding: 0 20px;
-    }
-    .card {
-      width: 60%;
-      padding: 60px;
-   }
-  
-    .img {
-      height: 20vh;
-     margin-top: 5px;
-    }
-  
-  }
-  
-  @media (min-width: 576px) and (max-width: 767px){
-    .welcome-screen {
-      width: 100%;
-      padding: 0 30px;
-    }
-    .card {
-      padding: 80px;
-      height: auto;
-      width: 90%;
-    }
-    .img {
-      height: 20vh;
-      margin-top: 10px;
-  }
-  h1 {
-    font-size: 18px;
-  }
-  h3 {
-    font-size: 14px;
-  }
-  .next-button {
-    padding: 5px 10px;
-  }
-  }
-  
-  @media (max-width: 575px) {
-    .welcome-screen {
-      width: 100%;
-      padding: 0 20px; 
-    }
-    .card {
-      padding: 70px;
-      height: auto;
-      width: 90%; 
-    }
-    .img {
-      height: 20vh;
-    }
-    h1 {
-      font-size: 18px;
-    }
-    h3 {
-      font-size: 14px;
-    }
-    .next-button {
-      padding: 5px 10px;
-    }
-  }
 
+@media (max-width: 1200px){
+  .welcome-screen {
+    width: 100%;
+    padding: 0 20px;
+  }
+ .card {
+   width: 60%;
+   padding: 10%;
+ }
+ .img{
   
+  margin-top: -15%;
+ }
+}
+@media (max-width: 768px) {
+  .welcome-screen {
+    width: 100%;
+    padding: 0 20px;
+  }
+ .card {
+   width: 100%;
+   margin: 16%;
+ }
+ h1{
+  font-size: 24px;
+  margin-top: 10px;
+ }
+ 
+}
+@media (max-width:480px) {
+  .welcome-screen {
+    width: 100%;
+    padding: 0 20px;
+  }
+ .card {
+   width: 100%;
+   padding: 10%;
+   height: 55vh;
+   margin: 10%;
+  }
+.img{
+  height: 20vh;
+  margin-top: -5%;
+}
+h1{
+  font-size: 20px;
+  margin-top: 10px;
+}
+h3{
+  font-size: 14px;
+}
+.next-button{
+  font-size: 14px;
+  padding: 10px 20px;
+}
+}
+@media (max-width:350px) {
+  .welcome-screen {
+    width: 100%;
+    padding: 0 20px;
+  }
+ .card {
+   width: 100%;
+   padding: 10%;
+ }
+}
+
   
   
