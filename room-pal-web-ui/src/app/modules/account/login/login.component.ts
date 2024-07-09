@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { NgClass,JsonPipe, CommonModule  } from '@angular/common';
-// import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-// import { BrowserAnimationsModule,provideAnimations  } from '@angular/platform-browser/animations';
+
 
 import {  AbstractControl,
   FormControl,
