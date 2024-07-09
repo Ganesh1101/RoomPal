@@ -1,4 +1,5 @@
 
+
 import { Component,OnInit } from '@angular/core';
 import { NgClass,JsonPipe  } from '@angular/common';
 import {  AbstractControl,
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   });
   
 
+
   mobileNumberValidator(control: AbstractControl): ValidationErrors | null {
     const value = new String(control.value).trim();
     if (!value) {
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
     if (value.length > 10) return { maxlength: true };
     return null;
   }
+
  
   passwordValidator(control: AbstractControl): ValidationErrors | null {
     const value = new String(control.value).trim();
@@ -75,4 +78,13 @@ export class LoginComponent implements OnInit {
     //  console.log(this.loginFormGroup.controls);
   
   }
+  onSubmit() {
+    this.loginFormGroup.markAllAsTouched();
+    // console.log(this.loginFormGroup.value);
+  }
 }
+
+
+  
+
+

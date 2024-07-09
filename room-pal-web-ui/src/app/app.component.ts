@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { LoginComponent } from './modules/account/login/login.component';
 import { RegisterComponent } from './modules/account/register/register.component';
 import { SetPasswordComponent } from './modules/account/set-password/set-password.component';
@@ -11,9 +12,11 @@ import { ForgetPasswordComponent } from './modules/account/forget-password/forge
 import { WelcomeScreenComponent } from './modules/account/welcome-screen/welcome-screen.component';
 import { IntroductionScreenComponent } from './modules/account/introduction-screen/introduction-screen.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
+
   imports: [RouterOutlet,
             LoginComponent,
             RegisterComponent,
@@ -25,9 +28,14 @@ import { IntroductionScreenComponent } from './modules/account/introduction-scre
             WelcomeScreenComponent,
             IntroductionScreenComponent,
             SetPasswordComponent ],
+
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'room-pal-web-ui';
+
+  getRegisterData(event: any) {
+    console.log('app component', event);
+  }
 }
