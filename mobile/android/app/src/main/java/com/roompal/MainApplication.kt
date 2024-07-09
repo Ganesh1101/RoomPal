@@ -1,4 +1,4 @@
-package com.roompal
+package com.teamx.homescout
 
 import android.app.Application
 import com.facebook.react.PackageList

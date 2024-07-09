@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import TeamXLogoImage from '../molecule/TeamXLogoImage';
 import { useDispatch, useSelector } from "react-redux";
-import {  AppDispatch,RootState } from '../../reducers/store';
+import { AppDispatch, RootState } from '../../reducers/store';
 import { resendOtp } from '../../reducers/auth/authSlice';
 
 const VerificationScreen = ({ navigation }) => {
@@ -12,11 +12,11 @@ const VerificationScreen = ({ navigation }) => {
   const { screen, data } = useSelector((state: RootState) => state.auth);
 
   const handleVerificationPress = () => {
-    if (validateOtp() && data.otp==otp) {
+    if (validateOtp() && data.otp == otp) {
       // Navigate to the next screen upon successful OTP verification
       navigation.navigate('ResetPasswordScreen');
     }
-    else{
+    else {
       setOtpError('Invalid OTP')
     }
   };
@@ -36,7 +36,7 @@ const VerificationScreen = ({ navigation }) => {
 
   const handleResendOTP = async () => {
     await dispatch(resendOtp())
-    
+
   };
 
   return (
@@ -44,7 +44,7 @@ const VerificationScreen = ({ navigation }) => {
       <View style={styles.innerContainer}>
         <TeamXLogoImage />
         <Text style={styles.otptext}>Please enter the OTP sent to your registered mobile number.</Text>
-        
+
         <Text style={styles.label}>OTP</Text>
         <TextInput
           style={styles.input}

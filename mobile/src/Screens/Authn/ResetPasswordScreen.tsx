@@ -15,7 +15,7 @@ const ResetPasswordScreen = ({ navigation }) => {
 
   const handleResetPasswordPress = async () => {
     if (validatePasswords()) {
-      await dispatch(resetPassword(newPassword,confirmPassword));
+      await dispatch(resetPassword(newPassword, confirmPassword));
       navigation.navigate('SucessPasswordScreen');
     }
   };
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     color: '#6b21a8',
     marginBottom: 5,
     alignSelf: 'flex-start',
-    fontWeight:"bold"
+    fontWeight: "bold"
   },
   input: {
     height: 40,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '100%',
   },
-  
+
   button: {
     backgroundColor: '#9333ea',
     flexDirection: 'row',
@@ -129,12 +129,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    marginRight: 10, 
+    marginRight: 10,
   },
   lockIcon: {
     width: 20,
     height: 20,
-    tintColor:'white'
+    tintColor: 'white'
   },
   errorText: {
     color: 'red',

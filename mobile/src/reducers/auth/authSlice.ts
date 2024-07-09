@@ -69,8 +69,8 @@ export const signIn = (mobileNumber: string, password: string): AppThunk => asyn
     dispatch(setMobileNumber(mobileNumber));
     dispatch(setSuccess('User logged in successfully.'));
   } catch (error) {
-    
-    dispatch(setError(error.response?.data?.message ||  'Sign in failed'));
+
+    dispatch(setError(error.response?.data?.message || 'Sign in failed'));
   } finally {
     dispatch(setBusy(false));
   }
@@ -111,11 +111,11 @@ export const register = (
       password,
       confirmPassword,
     });
- 
+
     await dispatch(setSuccess('User registered successfully.'));
     await dispatch(signIn(mobileNumber, password));
   } catch (error) {
-    
+
     dispatch(setError(error.response?.data?.message || 'Registration failed'));
   } finally {
     dispatch(setBusy(false));
@@ -126,10 +126,10 @@ export const forgotPassword = (mobileNumber: string): AppThunk => async (dispatc
   dispatch(setBusy(true));
   dispatch(setError(''));
   dispatch(setSuccess(''));
- 
+
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/forgotPassword`, { mobileNumber });
-    
+
     if (response.status === 200) {
       dispatch(setOTP(response.data.otp))
       dispatch(setMobileNumber(mobileNumber));
@@ -143,15 +143,15 @@ export const forgotPassword = (mobileNumber: string): AppThunk => async (dispatc
   }
 };
 
-export const verifyOTP = ( otp: string): AppThunk => async (dispatch,getState) => {
+export const verifyOTP = (otp: string): AppThunk => async (dispatch, getState) => {
   const { mobileNumber } = getState().auth.data;
   dispatch(setBusy(true));
   dispatch(setError(''));
   dispatch(setSuccess(''));
   try {
-   
-    const response = await axios.post(`${API_BASE_URL}/auth/verifyOTP`, { mobileNumber,otp });
-    
+
+    const response = await axios.post(`${API_BASE_URL}/auth/verifyOTP`, { mobileNumber, otp });
+
     if (response.status === 200) {
       dispatch(setOTP(otp));
       dispatch(setSuccess('OTP verified successfully.'));
@@ -186,7 +186,7 @@ export const resetPassword = (newPassword: string, confirmPassword: string): App
 };
 
 export const resendOtp = (): AppThunk => async (dispatch, getState) => {
-   const { mobileNumber } = getState().auth.data;
+  const { mobileNumber } = getState().auth.data;
   dispatch(setBusy(true));
   dispatch(setError(''));
   dispatch(setSuccess(''));

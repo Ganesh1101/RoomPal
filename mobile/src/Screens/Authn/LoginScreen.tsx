@@ -40,9 +40,9 @@ const LoginScreen = ({ navigation }) => {
 
     if (valid) {
       await dispatch(signIn(mobileNumber, password))
-       if(!authToken){
+      if (!authToken) {
         setMobileNumberError('Mobile Number already exists');
-       }
+      }
       ;
     }
   };
@@ -57,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
 
   useEffect(() => {
     if (success) {
-      navigation.navigate('ListOfRooms');
+      navigation.replace('ListOfRooms');
     }
   }, [success, navigation]);
 
@@ -87,12 +87,8 @@ const LoginScreen = ({ navigation }) => {
           keyboardType="number-pad"
         />
 
-
-
-
-
-
         {mobileNumberError ? <Text style={styles.errorText}>{mobileNumberError}</Text> : null}
+
         <Text style={styles.label}>Password</Text>
         <TextInput
           style={styles.input}

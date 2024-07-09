@@ -1,19 +1,18 @@
 //UnsuccessPasswordScreen
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
- 
 
 const UnsuccessPasswordScreen = ({ navigation }) => {
   const handleLoginPress = () => {
-    navigation.navigate('LoginScreen'); 
+    navigation.navigate('LoginScreen');
   };
 
   return (
     <View style={styles.container}>
-     <Image
-            source={require('../Images/ic_unsccess.png')}
-            style={styles.crossIcon}
-          />
+      <Image
+        source={require('../Images/ic_unsccess.png')}
+        style={styles.crossIcon}
+      />
       <Text style={styles.successText}>Oops! something went wrong while setting your password.</Text>
       <Text style={styles.successText}>Please try again later.</Text>
       <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
@@ -49,10 +48,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
-  crossIcon:{
-    width:100,
-    height:100,
-    marginBottom:20
+  crossIcon: {
+    width: 100,
+    height: 100,
+    marginBottom: 20
 
   }
 });

@@ -11,7 +11,6 @@ const ForgotPassword = ({ navigation }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { screen, data } = useSelector((state: RootState) => state.auth);
 
- 
   const handleLoginPress = () => {
     navigation.navigate('LoginScreen');
   };
@@ -19,15 +18,15 @@ const ForgotPassword = ({ navigation }) => {
   const handleRequestOTP = async () => {
     if (validateMobileNumber()) {
       await dispatch(forgotPassword(mobileNumber));
-  
+
       // Define a sleep function to pause execution for a specified duration
-      const sleep = (milliseconds:number) => {
+      const sleep = (milliseconds: number) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds));
       };
-  
+
       // Wait for 3 seconds (3000 milliseconds)
       await sleep(150);
-  
+
       // Check if OTP is received
       const { otp } = store.getState().auth.data; // Ensure you're fetching the latest state from the store
       if (otp) {
@@ -157,7 +156,4 @@ const styles = StyleSheet.create({
 });
 
 export default ForgotPassword;
-function sleep(arg0: number) {
-  throw new Error("Function not implemented.");
-}
 

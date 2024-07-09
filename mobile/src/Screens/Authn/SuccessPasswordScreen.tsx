@@ -4,15 +4,15 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const SuccessPasswordScreen = ({ navigation }) => {
   const handleLoginPress = () => {
-    navigation.navigate('LoginScreen'); 
+    navigation.navigate('LoginScreen');
   };
 
   return (
     <View style={styles.container}>
       <Image
-            source={require('../Images/ic_success.png')}
-            style={styles.tickIcon}
-          />
+        source={require('../Images/ic_success.png')}
+        style={styles.tickIcon}
+      />
       <Text style={styles.successText}>Your password has been successfully set!</Text>
       <TouchableOpacity style={styles.button} onPress={handleLoginPress}>
         <Text style={styles.buttonText}>Login to continue</Text>
@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
-  tickIcon:{
-    width:100,
-    height:100,
-    marginBottom:20
+  tickIcon: {
+    width: 100,
+    height: 100,
+    marginBottom: 20
 
   }
 });

@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface RoompalTests : XCTestCase
+@interface HomeScoutTests : XCTestCase
 
 @end
 
-@implementation RoompalTests
+@implementation HomeScoutTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
