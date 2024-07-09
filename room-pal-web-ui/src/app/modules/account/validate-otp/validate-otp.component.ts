@@ -18,10 +18,9 @@ export class ValidateOtpComponent {
   constructor(private fb: FormBuilder) {
     this.otpForm = this.fb.group({
       otp: ['', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(6),
-        Validators.pattern(/^\d{6}$/) 
+        Validators.required,Validators.minLength(6)
+
+     
       ]]
     });
   }

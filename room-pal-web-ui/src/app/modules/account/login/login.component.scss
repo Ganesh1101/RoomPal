@@ -13,6 +13,7 @@
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 400px;
+    margin-top: 10px;
   }
   
   .logo {
@@ -85,3 +86,40 @@
   .links a:hover {
     text-decoration: underline;
   }
+
+
+
+  @media (max-width:1024px) {
+  .card{
+    width: 400px;
+    padding: 35px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+ 
+  }  
+  
+  }
+  @media(max-width:768px){
+   .card{
+    width: 400px;
+    padding: 30px;
+    margin-bottom: 20px;
+   }
+  
+@media (max-width:468px){
+  .card{
+    width: 300px;
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+ 
+}
+  }
+
+
+
+
+
+
+
+

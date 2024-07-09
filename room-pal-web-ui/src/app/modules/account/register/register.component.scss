@@ -5,7 +5,7 @@
     justify-content: space-between;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.854);
-    width: 45%;
+    width: 76vh;
     margin: auto;
     font-size: 21px;
     margin-top: 20px;
@@ -113,7 +113,15 @@
     flex-wrap: wrap;
     gap: 0px;
   }
+
   
+  .yes-checkbox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+  }
+
+
   input[type="checkbox"] {
     transform: scale(1.5);
     margin: 10px;
@@ -123,7 +131,7 @@
     transform: scale(1.5);
     margin: 10px;
   }
-  
+ 
   .checkbox label {
     flex: 1 1 45%;
     display: flex;
@@ -167,3 +175,83 @@
     font-size: 14px;
     text-align: left;
   }
+
+// @media (max-width: 2000px){
+//   // .card{
+//   //      width: 40%;
+//   //      margin-top: 20px;
+//   //      margin-bottom: 20px;
+//   //   }
+    
+//   .btn{
+//     width: 50%;
+//  }
+//  .checkbox{
+//    flex-direction: column;
+//  }
+  
+// } 
+
+@media (max-width: 1280px) {
+  .checkbox{
+     flex-direction: column;
+  }
+
+  .btn{
+     width: 50%;
+  }
+ 
+  
+}
+
+
+
+  @media (max-width: 1024px) {
+    .checkbox{
+       flex-direction: column;
+    }
+  
+    .btn{
+       width: 100%;
+    }
+   .card{
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+ 
+   }
+   h3{
+    font-size: 20px;
+   }
+    
+  }
+
+  
+
+
+  @media (max-width: 767px) {
+    .card{
+      width:70vh;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    
+      
+    }
+  h3{
+    font-size: 20px;
+ 
+  }
+  }
+  
+
+ 
+
+ 
+  
+
+
+
+  
+
+  

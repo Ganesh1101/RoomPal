@@ -48,3 +48,37 @@
     background-color: #5821b7;
   }
   
+
+
+  @media (max-width: 768px) {
+  
+    .card {
+      padding: 50px;
+    }
+  
+  .logo{
+    height: 25vh;
+    margin-top: -3%;
+  }
+  
+  }
+  @media (max-width: 480px) {
+    
+    .card {
+      padding: 30px;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    .logo{
+      height: 20vh;
+      margin-top: -5%;
+    }
+  }
+  @media (max-width:1024px) {
+  .card{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  
+  }

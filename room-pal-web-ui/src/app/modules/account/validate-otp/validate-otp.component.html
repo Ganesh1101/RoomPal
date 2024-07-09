@@ -1,21 +1,34 @@
 <div class="otp-container">
-    <img src="images/logo.jpg" alt="Logo" class="logo"/>
-    <p>Please enter the OTP sent to your registered email address.</p>
-    <form (ngSubmit)="onSubmit()" [formGroup]="otpForm">
-      <div class="form-group">
-        <h2>OTP</h2>
-        <input formControlName="otp"  placeholder="Enter OTP" />
-        <div  class="color" *ngIf="otpForm.controls['otp'].invalid && (otpForm.controls['otp'].dirty || otpForm.controls['otp'].touched)">
-          <small  class="color" *ngIf="otpForm.controls['otp'].errors?.['required']">OTP is required.</small>
-          <small  class="color" *ngIf="otpForm.controls['otp'].errors?.['minlength'] || otpForm.controls['otp'].errors?.['maxlength']">.</small>
-          <small class="color" *ngIf="otpForm.controls['otp'].errors?.['pattern']">OTP must contain only 6 digits.</small>
-        </div>
-      </div>
-      <button type="submit" [disabled]="!otpForm.valid">Verify OTP &#10004;</button>
-    </form>
-    <p>
-      Didn't receive OTP? 
-      <a href="#" (click)="resendOTP($event)">Resend OTP</a>
-    </p>
+  <img src="images/logo.jpg" alt="Logo" class="logo" />
+  <p>Please enter the OTP sent to your registered email address.</p>
+  <form (ngSubmit)="onSubmit()" [formGroup]="otpForm">
+    <div class="form-group">
+   
+      <h2>OTP</h2>
+      <input formControlName="otp" placeholder="Enter OTP" [ngClass]="otpForm.controls['otp'].errors &&
+        otpForm.controls['otp'].touched? 'is-invalid' : ''   " />
+
+
+      @if (
+        otpForm.controls["otp"].errors &&
+        otpForm.controls["otp"].touched
+      ){
+
+      @if (otpForm.controls["otp"].errors["required"]) {
+      <div class="invalid-feedback">otp is required</div>
+      }
+      
+      @if (otpForm.controls["otp"].errors["minlength"]) {
+        <div class="invalid-feedback">Minimum 6 digits required</div>
+      }
+      }
   </div>
-  
+      <button type="submit" [disabled]="!otpForm.valid">Verify OTP &#10004;</button>
+
+  <p>
+    Didn't receive OTP?
+    <a href="#" (click)="resendOTP($event)">Resend OTP</a>
+  </p>
+
+</form>
+</div>
