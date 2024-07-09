@@ -76,7 +76,7 @@ android {
 
     namespace "com.roompal"
     defaultConfig {
-        applicationId "com.roompal"
+        applicationId "com.homescout"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
