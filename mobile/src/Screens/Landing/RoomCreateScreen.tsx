@@ -315,6 +315,11 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
       </ScrollView>
     );
   };
+  const onMapLongPress = event => {
+    const { latitude, longitude } = event.nativeEvent.coordinate;
+    setLatitude(latitude);
+    setLongitude(longitude);
+  };
   return (
     <ScrollView style={styles.createcontainer} contentContainerStyle={{ paddingBottom: 90 }} keyboardShouldPersistTaps="handled" >
       <View style={{ alignSelf: 'center' }}>
@@ -522,55 +527,28 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
         <TeamXErrorText errorText={addressError} />
       </View>
 
+    
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Location</Text>
         <TouchableOpacity
-          style={[styles.button, { marginBottom: 10, width: 150, height: 40 }]}
-          onPress={captureLocation}
-        >
-          <Text style={[styles.buttonText, { fontSize: 14 }]}>Capture Location</Text>
+          style={[styles.button, { marginBottom: 20 }]}
+          onPress={captureLocation}>
+          <Text style={styles.buttonText}>Capture Location</Text>
         </TouchableOpacity>
 
-        <Text style={{ color: '#814ABF' }}>{location ? location : 'No location selected'}</Text>
-        <TeamXErrorText errorText={locationError} />
+        <MapmyIndiaMapView
+          ref={mapRef}
+          style={styles.map}
+          zoomLevel={14}
+          centerCoordinate={[latitude, longitude]}
+          onLongPress={onMapLongPress}
+        >
+          <Marker coordinate={[latitude, longitude]} />
+        </MapmyIndiaMapView>
+        {locationError ? (
+          <Text style={styles.errorText}>{locationError}</Text>
+        ) : null}
       </View>
-
-      <View style={styles.inputGroup}>
-        <Text style={styles.label}>Latitude</Text>
-        <View style={styles.coordinatesContainer}>
-          <TextInput
-            style={[styles.input, { flex: 1 }]}
-            value={latitude}
-            onChangeText={setLatitude}
-            keyboardType="numeric"
-            placeholder="Enter latitude"
-            onFocus={() => setTabBarVisibility(false)}
-            onBlur={() => setTabBarVisibility(true)}
-          />
-          <Text style={styles.coordinateDirection}>
-            {latitude ? getLatitudeDirection(parseFloat(latitude)) : 'N/S'}
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.inputGroup}>
-        <Text style={styles.label}>Longitude</Text>
-        <View style={styles.coordinatesContainer}>
-          <TextInput
-            style={[styles.input, { flex: 1 }]}
-            value={longitude}
-            onChangeText={setLongitude}
-            keyboardType="numeric"
-            placeholder="Enter longitude"
-            onFocus={() => setTabBarVisibility(false)}
-            onBlur={() => setTabBarVisibility(true)}
-          />
-          <Text style={styles.coordinateDirection}>
-            {longitude ? getLongitudeDirection(parseFloat(longitude)) : 'E/W'}
-          </Text>
-        </View>
-      </View>
-
 
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Room Images</Text>
