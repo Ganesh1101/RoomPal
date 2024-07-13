@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { JsonPipe } from '@angular/common';
+import { Component, inject } from '@angular/core'
+import { JsonPipe } from '@angular/common'
 import {
   AbstractControl,
   FormControl,
@@ -7,8 +7,10 @@ import {
   ReactiveFormsModule,
   ValidationErrors,
   Validators,
-} from '@angular/forms';
-import { RouterLink } from '@angular/router';
+} from '@angular/forms'
+import { RouterLink } from '@angular/router'
+import { HttpClient } from '@angular/common/http'
+import { API_ENDPOINTS } from '../../../shared/config/api-end-points'
 
 @Component({
   selector: 'app-login',
@@ -18,9 +20,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  private httpClient = inject(HttpClient)
+
   formGroup: FormGroup<{
-    mobileNumber: FormControl;
-    password: FormControl;
+    mobileNumber: FormControl
+    password: FormControl
   }> = new FormGroup({
     mobileNumber: new FormControl('', [
       Validators.required,
@@ -30,21 +34,38 @@ export class LoginComponent {
       Validators.required,
       Validators.minLength(6),
     ]),
-  });
+  })
 
   mobileNumberValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) {
-      return null;
+      return null
     }
 
-    const value = new String(control.value).trim();
+    const value = new String(control.value).trim()
 
-    if (value.length < 10) return { minlength: true };
-    if (value.length > 10) return { maxlength: true };
-    return null;
+    if (value.length < 10) return { minlength: true }
+    if (value.length > 10) return { maxlength: true }
+    return null
   }
 
   submitForm() {
     this.formGroup.markAllAsTouched()
+
+    if (this.formGroup.valid) {
+      this.httpClient
+        .post(API_ENDPOINTS.AUTH_SIGN_IN.url, this.formGroup.value)
+        .subscribe({
+          next: success => console.info('success', success),
+          error: error => console.error('error', error),
+        })
+    }
   }
 }
+
+/***
+ * CRUD
+ * C : Create,
+ * R : Read
+ * U : update,
+ * D : delete
+ */
