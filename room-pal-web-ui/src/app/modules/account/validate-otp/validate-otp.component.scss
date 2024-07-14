@@ -1,5 +1,14 @@
 
-
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-width: 100%;
+  background-color: #f3ebff;
+}
 .otp-container {
 
   margin: 8% auto;
@@ -85,14 +94,14 @@ a:hover {
   .otp-container {
     margin: 20% auto;
     height: 70vh;
-    padding: 40px;
+    padding: 20px;
     width: 350px;
-    border: 2px solid black;
+   
   }
   .logo {
     width: 60%;
     height: 14vh;
-    margin-top: -10%;
+    margin-top: -5%;
   }
   input{
     padding: 7px;
@@ -112,16 +121,16 @@ a:hover {
 }
 @media (max-width: 330px) {
   .otp-container {
-    margin: 20% auto;
-    height: 70vh;
-    padding: 40px;
+    // margin: 50% auto;
+    height: 65vh;
+    padding: 20px;
     width: 250px;
-    border: 2px solid black;
+    
   }
   .logo {
     width: 60%;
     height: 14vh;
-    margin-top: -10%;
+    margin-top: -5%;
   }
   input{
     padding: 7px;

@@ -1,7 +1,9 @@
+<div class="container">
+<form (ngSubmit)="onSubmit()" [formGroup]="otpForm">
 <div class="otp-container">
   <img src="images/logo.jpg" alt="Logo" class="logo"/>
   <p>Please enter the OTP sent to your registered email address.</p>
-  <form (ngSubmit)="onSubmit()" [formGroup]="otpForm">
+  
     <div class="form-group">
       <h2>OTP</h2>
       <input  formControlName="otp" placeholder="Enter OTP" 
@@ -28,9 +30,11 @@
 
     </div>
     <button type="submit" [disabled]="!otpForm.valid">Verify OTP &#10004;</button>
-  </form>
+ 
   <p>
     Didn't receive OTP? 
     <a href="#">Resend OTP</a>
   </p>
+</div>
+</form>
 </div>

@@ -129,6 +129,11 @@
   .checkbox label{
     font-size: 17px;
   }
+  .checkbox img{
+    
+    height: 4vh;
+    width: 5vw;
+  }
 }
 @media (max-width: 480px){
   .card{
@@ -138,6 +143,7 @@
   }
   .logo{
     height: 15vh;
+  
     margin-top: -12%;
   }
   input, textarea, button{
@@ -148,7 +154,12 @@
     margin: 10px 0;
   }
   ::placeholder{
-    font-size: 17px;
+    font-size: 13px;
+  }
+  .checkbox img{
+    
+    height: 4vh;
+    width: 5vw;
   }
   
 }
