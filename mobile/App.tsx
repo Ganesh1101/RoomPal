@@ -22,6 +22,7 @@ import ListOfRooms from './src/Screens/Landing/ListOfRooms';
 import FilterScreen from './src/Screens/Landing/FilterScreen';
 import ProfileScreen from './src/Screens/Landing/ProfileScreen';
 import Dashboard from './src/Screens/Landing/Dashboard';
+import paymentScreen1 from './src/Screens/Landing/PaymentScreen1';
 
 const Stack = createStackNavigator();
 
@@ -44,13 +45,15 @@ const Authn = () => (
 
 
 const Landing = () => (
-  <Stack.Navigator initialRouteName="Dashboard" headerMode="none">
+  <Stack.Navigator initialRouteName="paymentScreen1" headerMode="none">
     <Stack.Screen name="Dashboard" component={Dashboard} />
     <Stack.Screen name="RoomDetails" component={RoomDetails} />
     <Stack.Screen name="RoomCreateScreen" component={RoomCreateScreen} />
     <Stack.Screen name="ListOfRooms" component={ListOfRooms} />
     <Stack.Screen name="FilterScreen" component={FilterScreen} />
     <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+    <Stack.Screen name="paymentScreen1" component={paymentScreen1} />
+
   </Stack.Navigator>
 );
 
@@ -58,7 +61,7 @@ function App(): React.ReactElement {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Authn" headerMode="none">
+        <Stack.Navigator initialRouteName="Landing" headerMode="none">
           <Stack.Screen name="Authn" component={Authn} />
           <Stack.Screen name="Landing" component={Landing} />
         </Stack.Navigator>
