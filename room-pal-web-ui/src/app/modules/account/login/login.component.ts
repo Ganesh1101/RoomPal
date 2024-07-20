@@ -1,6 +1,6 @@
 
 
-import { Component,OnInit } from '@angular/core';
+import { Component,inject,OnInit } from '@angular/core';
 import { NgClass,JsonPipe  } from '@angular/common';
 import {  AbstractControl,
   FormControl,
@@ -9,6 +9,7 @@ import {  AbstractControl,
   ValidationErrors,
   Validators, } from '@angular/forms';
   import intlTelInput from 'intl-tel-input';
+import { HttpClient } from '@angular/common/http';
 
   @Component({
       selector: 'app-login',
@@ -18,6 +19,7 @@ import {  AbstractControl,
       styleUrl: './login.component.scss',
     })
 export class LoginComponent implements OnInit {
+   private httpClient = inject(HttpClient);
  
   loginFormGroup: FormGroup<{
     mobileNumber: FormControl;
@@ -25,13 +27,17 @@ export class LoginComponent implements OnInit {
   }> = new FormGroup({
     mobileNumber: new FormControl('', [
       Validators.required,
-      this.mobileNumberValidator,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+      
+       this.mobileNumberValidator,
     ]),
    password: new FormControl('',[Validators.required, 
      Validators.minLength(6), 
      Validators.maxLength(16)
     ])
   });
+   
   
 
 
@@ -40,12 +46,11 @@ export class LoginComponent implements OnInit {
     if (!value) {
       return null;
     }
-    if (value.length <= 1 && value.length < 10) return { minlength: true };
+    if (value.length < 10) return { minlength: true };
     if (value.length > 10) return { maxlength: true };
     return null;
   }
 
- 
   passwordValidator(control: AbstractControl): ValidationErrors | null {
     const value = new String(control.value).trim();
     if (!value) {
@@ -75,16 +80,17 @@ export class LoginComponent implements OnInit {
   onLoginClick() {
     this.loginFormGroup.markAllAsTouched();
     console.log(this.loginFormGroup.value);
-    //  console.log(this.loginFormGroup.controls);
+    
+     console.log(this.loginFormGroup.controls);
+    if(this.loginFormGroup.valid){
+      this.httpClient.post('http://106.51.138.23:3001/api/auth/signIn',this.loginFormGroup.value)
+      .subscribe({
+        next: success =>console.info('success',success),
+        error: error => console.log('error', error)   
+      });
+    }
   
   }
-  onSubmit() {
-    this.loginFormGroup.markAllAsTouched();
-    // console.log(this.loginFormGroup.value);
-  }
+  
 }
-
-
-  
-
 

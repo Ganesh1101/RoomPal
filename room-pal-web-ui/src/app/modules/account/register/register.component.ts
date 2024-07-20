@@ -1,5 +1,6 @@
 import { NgClass,JsonPipe } from '@angular/common';
-import { Component ,OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component ,inject,OnInit} from '@angular/core';
 import {  AbstractControl,
   FormControl,
   FormGroup,
@@ -7,6 +8,7 @@ import {  AbstractControl,
   ValidationErrors,
   Validators } from '@angular/forms';
   import intlTelInput from 'intl-tel-input';
+  import moment from 'moment';
 
 @Component({
   selector: 'app-register',
@@ -16,10 +18,19 @@ import {  AbstractControl,
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
+  private httpService = inject(HttpClient);
   registrationForm: FormGroup<{
     mobileNumber:FormControl;
     password:FormControl;
     confirmPassword:FormControl;
+    fullName: FormControl;
+    email: FormControl;
+    dateOfBirth: FormControl;
+    gender: FormControl;
+    lookingForRoommate:FormControl;
+    lookingForRoom:FormControl;
+    preferences: FormControl;
+   
   }>= new FormGroup({
     mobileNumber: new FormControl('', [
       Validators.required,
@@ -32,7 +43,19 @@ export class RegisterComponent implements OnInit {
     confirmPassword: new FormControl ('',[ Validators.required,
       Validators.minLength(6), 
       Validators.maxLength(16)
-    ])
+    ]),
+    fullName: new FormControl('',[Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(50)
+    ]),
+    email: new FormControl('',[Validators.required, Validators.email]),
+    dateOfBirth: new FormControl('',Validators.required),
+    gender: new FormControl('', Validators.required),
+    lookingForRoommate: new FormControl('', Validators.required),
+    lookingForRoom: new FormControl('', Validators. required),
+    preferences: new FormControl(''),
+    
+  
   });
 
 
@@ -41,7 +64,7 @@ export class RegisterComponent implements OnInit {
     if (!value) {
       return null;
     }
-    if (value.length <= 1 && value.length < 10) return { minlength: true };
+    if (value.length  < 10) return { minlength: true };
     if (value.length > 10) return { maxlength: true };
     return null;
   }
@@ -86,9 +109,31 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.registrationForm.markAllAsTouched();
     console.log(this.registrationForm.value);
-    console.log(this.registrationForm.controls);
-  
+    
+
+    if(this.registrationForm.valid)
+     {
+      const userInfo ={
+        fullName: this.registrationForm.value.fullName,
+        email: this.registrationForm.value.email,
+        mobileNumber: this.registrationForm.value.mobileNumber,
+        dateOfBirth: this.registrationForm.value.dateOfBirth,
+        gender: this.registrationForm.value.gender,
+        lookingForRoommate : this.registrationForm.value.lookingForRoommate,
+        lookingForRoom: this.registrationForm.value.lookingForRoom,
+        password: this.registrationForm.value.password,
+        confirmPassword: this.registrationForm.value.confirmPassword,
+        
+        
+      }
+      console.log(this.registrationForm.value);
+      this.httpService.post('http://106.51.138.23:3001/api/auth/register',userInfo  )
+      .subscribe({
+        next:success=> console.info('success',success),
+        error:error=> console.log('error',error)});
+    }
   }
+// Date = moment().format("YYYY MM DD");  
 
  
 }

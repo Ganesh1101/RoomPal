@@ -4,10 +4,54 @@
       <img src="images/logo.jpg" alt="Logo" class="logo" />
       <h1>Registration Form</h1>
       <div>
-        <h3>Mobile Number</h3>
-        <input type="text"
-          formControlName="mobileNumber"
+        <h3>FullName</h3>
+        <input type="text" 
+          formControlName="fullName"
           class="input-field"
+          placeholder="Enter your full name"
+          [ngClass]="registrationForm.controls['fullName'].errors &&
+           registrationForm.controls['fullName'].touched? 'is-invalid' : ''   "/>
+            @if (
+              registrationForm.controls["fullName"].errors &&
+              registrationForm.controls["fullName"].touched
+            ){
+              @if (registrationForm.controls["fullName"].errors["required"]) {
+                <div class="invalid-feedback">Full Name is required</div>
+              }
+              
+              @if (registrationForm.controls["fullName"].errors["minlength"]) {
+                <div class="invalid-feedback">Minimum 3 characters required</div>
+              }
+              @if (registrationForm.controls["fullName"].errors["maxlength"]) {
+                <div class="invalid-feedback">Maximum 50 characters allowed</div>
+              }
+            }
+      </div>
+      <div>
+        <h3>Email</h3>
+        <input type="email" 
+          formControlName="email"
+          class="input-field"
+          placeholder="Enter your email"
+          [ngClass]="registrationForm.controls['email'].errors &&
+           registrationForm.controls['email'].touched? 'is-invalid' : ''   "/>
+            @if (
+              registrationForm.controls["email"].errors &&
+              registrationForm.controls["email"].touched
+            ){
+              @if (registrationForm.controls["email"].errors["required"]) {
+                <div class="invalid-feedback">Email is required</div>
+              }
+              @if (registrationForm.controls["email"].errors["email"]) {
+                <div class="invalid-feedback">Please enter a valid email address</div>
+              }
+            }
+      </div>
+      <div>
+        <h3>Mobile Number</h3>
+        <input type="number" 
+          formControlName="mobileNumber"
+          class="input-field number-input "
           placeholder="Enter your mobile number"
           [ngClass]="registrationForm.controls['mobileNumber'].errors &&
            registrationForm.controls['mobileNumber'].touched? 'is-invalid' : ''   "/>
@@ -33,38 +77,54 @@
   
       <div>
         <h3>Date of Birth</h3>
-        <input id="dateOfBirth" type="date" class="input-field"/>
+        <input id="dateOfBirth" type="date" formControlName="dateOfBirth" class="input-field"/>
       </div>
       <div>
         <h3>Gender</h3>
         <div>
           <label class="text">
-            <input type="radio" value="Male" class="gender" name="gender"/> Male</label>
+            <input type="radio" value="Male" class="gender" name="gender" formControlName="gender"/> Male</label>
           <label class="text">
-            <input type="radio" value="Female" class="gender" name="gender"/> Female</label>
+            <input type="radio" value="Female" class="gender" name="gender" formControlName="gender"/> Female</label>
         </div>
       </div>
-      <div class="container">
-        <div class="question">
-          <h3>Looking for Roommate?</h3>
-          <div class="button-group">
-            <input type="radio" name="roommateToggle" id="button1" class="input-hidden" />
-            <label for="button1" class="btn">Yes</label>
-            <input type="radio" name="roommateToggle" id="button2" class="input-hidden"  />
-            <label for="button2" class="btn">No</label>
-          </div>
-        </div>
-        <div class="question">
+      <!-- <div class="container">
+        
+         <div class="question">
           <h3>Looking for Room?</h3>
           <div class="button-group">
-            <input type="radio" name="roomToggle" id="button3" class="input-hidden" >
+            <input type="radio" name="lookingForRoom" id="button3" class="input-hidden" >
             <label for="button3" class="btn">Yes</label>
-            <input type="radio" name="roomToggle" id="button4" class="input-hidden">
+            <input type="radio" name="lookingForRoom" id="button4" class="input-hidden">
             <label for="button4" class="btn">No</label>
           </div>
-        </div>
-      </div>
-      <div >
+         </div> 
+         <div class="question">
+          <h3>Looking for Roommate?</h3>
+          <div class="button-group">
+            <input type="radio" name="lookingForRoommate" id="button1" class="input-hidden" />
+            <label for="button1" class="btn">Yes</label>
+            <input type="radio" name="lookingForRoommate" id="button2" class="input-hidden"  />
+            <label for="button2" class="btn">No</label>
+          </div>
+        </div>  
+      </div> -->
+    
+          <div >
+            <h3>Looking for Room</h3>
+            <label class="checkbox">
+            <input type="checkbox"  formControlName="lookingForRoom">Are you looking for room?
+            </label>
+          </div>
+          <div>
+            
+            <h3>Looking for Roommate</h3>
+            <label class="checkbox">
+            <input type="checkbox" formControlName="lookingForRoommate">Are you looking for roommate?
+          </label>
+      
+         </div>
+      
         <h3>Preferences</h3>
         <div class="checkbox">
           <label>
@@ -80,9 +140,9 @@
             <input type="checkbox"  formControlName="preference4"/> Drinking Allowed
           </label>
         </div>
-      </div>
+    
   
-      <div>
+       <div>
         <h3>Mobile Number Public?</h3>
         <label class="checkbox1">
           <input type="checkbox"/> Yes,
@@ -164,4 +224,4 @@
       </div>
     </div>
   </form>
-  </div>
+  </div> 

@@ -1,12 +1,38 @@
 <div class="container">
-<form (ngSubmit)="onSubmit()" [formGroup]="otpForm">
+<form  [formGroup]="otpForm" (ngSubmit)="onSubmit()">
 <div class="otp-container">
   <img src="images/logo.jpg" alt="Logo" class="logo"/>
   <p>Please enter the OTP sent to your registered email address.</p>
+    <div>
+      <h2>Mobile Number</h2>
+        <input type="number" 
+          formControlName="mobileNumber"
+          class="input-field number-input "
+          placeholder="Enter your mobile number"
+          [ngClass]="otpForm.controls['mobileNumber'].errors &&
+          otpForm.controls['mobileNumber'].touched? 'is-invalid' : ''   "/>
   
+  @if (
+    otpForm.controls["mobileNumber"].errors &&
+    otpForm.controls["mobileNumber"].touched
+    ){
+  
+      @if (otpForm.controls["mobileNumber"].errors["required"]) {
+        <div class="invalid-feedback">Mobile Number is required</div>
+      }
+  
+      @if (otpForm.controls["mobileNumber"].errors["minlength"]) {
+        <div class="invalid-feedback">Minimum 10 digits required</div>
+      }
+      @if (otpForm.controls["mobileNumber"].errors["maxlength"]) {
+        <div class="invalid-feedback">Maximum 10 digits allowed</div>
+      }
+  
+  }
+    </div>
     <div class="form-group">
       <h2>OTP</h2>
-      <input  formControlName="otp" placeholder="Enter OTP" 
+      <input  formControlName="otp" placeholder="Enter OTP" class="input-field"
       [ngClass]="otpForm.controls['otp'].errors &&
       otpForm.controls['otp'].touched   ? 'is-invalid':'' "/>
                   @if (
@@ -29,7 +55,7 @@
                     }       
 
     </div>
-    <button type="submit" [disabled]="!otpForm.valid">Verify OTP &#10004;</button>
+    <button type="submit" >Verify OTP &#10004;</button>
  
   <p>
     Didn't receive OTP? 

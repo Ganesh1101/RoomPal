@@ -14,7 +14,7 @@
   margin: 8% auto;
   border: 1px solid #ddd;
   border-radius: 5px;
-  height: 70vh;
+  height: 90vh;
   background-color: white;
   padding: 40px;
   text-align: center;
@@ -30,7 +30,8 @@
 }
 h2{
   color: #6b23d4;
-  font-size: 28px;
+  font-size: 25px;
+  margin-top: 10px;
   text-align: left;
 }
 
@@ -49,9 +50,17 @@ input {
   border-radius: 5px;
   font-size: 18px;
 }
-
+.invalid-feedback {
+  font-size: 15px;
+  margin-top: 10px;
+  text-align: left;
+  color: #dc3545;
+}
+.input-field.is-invalid{
+  border: 1px solid red;
+}
 button {
-  width: 106%;
+  width: 100%;
   padding: 10px;
   background-color: #6b23d4;
   font-size: 20px;
@@ -80,7 +89,7 @@ a:hover {
 @media (max-width: 768px) {
   .otp-container {
     margin: 15% auto;
-    height: 70vh;
+    height: 90vh;
     padding: 40px;
     width: 400px;
   }
@@ -93,7 +102,7 @@ a:hover {
 @media (max-width: 480px) {
   .otp-container {
     margin: 20% auto;
-    height: 70vh;
+    height: 85vh;
     padding: 20px;
     width: 350px;
    
@@ -121,11 +130,9 @@ a:hover {
 }
 @media (max-width: 330px) {
   .otp-container {
-    // margin: 50% auto;
-    height: 65vh;
+    height: 85vh;
     padding: 20px;
     width: 250px;
-    
   }
   .logo {
     width: 60%;
@@ -136,7 +143,7 @@ a:hover {
     padding: 7px;
   }
   h2{
-    margin-top: -10px;
+    margin-top: 1px;
     font-size: 20px;
   }
   p{
@@ -147,5 +154,11 @@ a:hover {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
+  }
+  a{
+    font-size: 16px;
+  }
+  ::placeholder{
+    font-size: 15px;
   }
 }

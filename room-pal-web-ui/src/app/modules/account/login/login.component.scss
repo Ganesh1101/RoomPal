@@ -31,7 +31,6 @@ h2 {
   text-align: left;
   margin: 10px 0;
 }
-
 .input-field {
   width: 100%;
   padding: 15px;
@@ -40,11 +39,6 @@ h2 {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-.input-field.is-invalid {
-  border-color: red;
-}
-
 .remember-me {
   display: flex;
   align-items: center;
@@ -90,13 +84,23 @@ h2 {
 .links a:hover {
   text-decoration: underline;
 }
-   
+.password{
+  display: block;
+    width: 100%;
+    margin-top:-11px;
+    font-size: 80%;
+    color: #ec101f;
+}
+.input-field.is-invalid{
+  border: 1px solid red;
+}
+
 
 @media (max-width: 768px) {
   
   .card{
      width: 365px;
-     height: 90vh;
+     height: 94vh;
    }
   .logo{
      width: 70%;
@@ -113,7 +117,7 @@ h2 {
 @media (max-width:480px){
   .card{
      width: 365px;
-     height: 90vh;
+     height: 94vh;
    }
   .logo{
      width: 70%;

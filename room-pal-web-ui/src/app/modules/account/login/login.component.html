@@ -7,9 +7,9 @@
         <div class="card">
           <img src="/images/logo.jpg" alt="Logo" class="logo"/>
           <h2>Mobile Number</h2>
-          <input type="tel" id="phone"
+          <input type="number" id="phone"
            placeholder="Enter mobile number" 
-           class="input-field"
+           class="input-field number-input"
            formControlName="mobileNumber"
            [ngClass]="loginFormGroup.controls['mobileNumber'].errors &&
            loginFormGroup.controls['mobileNumber'].touched? 'is-invalid' : ''   "/>
@@ -49,14 +49,14 @@
                 ){
   
               @if (loginFormGroup.controls["password"].errors["required"]) {
-                <div class="invalid-feedback">Password is required</div>
+                <div class="invalid-feedback password">Password is required</div>
                }
   
               @if (loginFormGroup.controls["password"].errors["minlength"]) {
-                <div class="invalid-feedback">Minimum 6 characters required</div>
+                <div class="invalid-feedback password ">Minimum 6 characters required</div>
               }
               @if (loginFormGroup.controls["password"].errors["maxlength"]) {
-                <div class="invalid-feedback">Maximum 20 characters allowed..</div>
+                <div class="invalid-feedback password">Maximum 20 characters allowed..</div>
               }
               }
           
