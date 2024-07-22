@@ -27,7 +27,7 @@ import { RadioButton } from 'react-native-paper';
 import RNFS from 'react-native-fs';
 
 
-const RoomCreateScreen = ({ setTabBarVisibility }) => {
+const RoomCreateScreen = ({ setTabBarVisibility,navigation }) => {
   const dispatch = useDispatch();
   const [roomName, setRoomName] = useState('');
   const [details, setDetails] = useState('');
@@ -193,43 +193,41 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
     }
   };
 
-  const requestLocationPermission = async () => {
-    try {
-      const result = await request(
-        Platform.OS === 'ios'
-          ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
-          : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-      );
-      return result === 'granted';
-    } catch (err) {
-      console.warn(err);
-      return false;
-    }
-  };
-
-  const captureLocation = async () => {
-    const hasPermission = await requestLocationPermission();
-    if (!hasPermission) {
-      Alert.alert(
-        'Permission Denied',
-        'Location permission is required to capture your location.',
-      );
-      return;
-    }
-
-    Geolocation.getCurrentPosition(
-      position => {
-        const { latitude, longitude } = position.coords;
-        const locationString = `${latitude}, ${longitude}`;
-        setLocation(locationString);
-      },
-      error => {
-        Alert.alert('Error', 'Unable to retrieve your location.');
-        console.error(error);
-      },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
-    );
-  };
+  // const requestLocationPermission = async () => {
+    // try {
+      // const result = await request(
+        // Platform.OS === 'ios'
+          // ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+          // : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      // );
+      // return result === 'granted';
+    // } catch (err) {
+      // console.warn(err);
+      // return false;
+    // }
+  // };
+  //  const captureLocation = async () => {
+    // const hasPermission = await requestLocationPermission();
+    // if (!hasPermission) {
+      // Alert.alert(
+        // 'Permission Denied',
+        // 'Location permission is required to capture your location.',
+      // );
+      // return;
+    // }
+    // Geolocation.getCurrentPosition(
+      // position => {
+        // const { latitude, longitude } = position.coords;
+        // const locationString = `${latitude}, ${longitude}`;
+        // setLocation(locationString);
+      // },
+      // error => {
+        // Alert.alert('Error', 'Unable to retrieve your location.');
+        // console.error(error);
+      // },
+      // { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+    // );
+  // };
   const handleAmenityChange = index => {
     const updatedAmenities = [...amenities];
     updatedAmenities[index].checked = !updatedAmenities[index].checked;
@@ -526,7 +524,8 @@ const RoomCreateScreen = ({ setTabBarVisibility }) => {
         <Text style={styles.label}>Location</Text>
         <TouchableOpacity
           style={[styles.button, { marginBottom: 10, width: 150, height: 40 }]}
-          onPress={captureLocation}
+          // onPress={captureLocation}
+           onPress={navigation.navigate('Maps')}
         >
           <Text style={[styles.buttonText, { fontSize: 14 }]}>Capture Location</Text>
         </TouchableOpacity>

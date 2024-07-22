@@ -22,6 +22,7 @@ import ListOfRooms from './src/Screens/Landing/ListOfRooms';
 import FilterScreen from './src/Screens/Landing/FilterScreen';
 import ProfileScreen from './src/Screens/Landing/ProfileScreen';
 import Dashboard from './src/Screens/Landing/Dashboard';
+import Maps from './src/Screens/Landing/Map';
 
 const Stack = createStackNavigator();
 
@@ -44,13 +45,15 @@ const Authn = () => (
 
 
 const Landing = () => (
-  <Stack.Navigator initialRouteName="Dashboard" headerMode="none">
+  <Stack.Navigator initialRouteName="Maps" headerMode="none">
     <Stack.Screen name="Dashboard" component={Dashboard} />
     <Stack.Screen name="RoomDetails" component={RoomDetails} />
     <Stack.Screen name="RoomCreateScreen" component={RoomCreateScreen} />
     <Stack.Screen name="ListOfRooms" component={ListOfRooms} />
     <Stack.Screen name="FilterScreen" component={FilterScreen} />
     <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+    <Stack.Screen name="Maps" component={Maps} />
+
   </Stack.Navigator>
 );
 
