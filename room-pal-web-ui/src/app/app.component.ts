@@ -25,7 +25,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 })
 export class AppComponent {
   title = 'room-pal-web-ui';
-
+  
   getRegisterData(event: any) {
     console.log('app component', event);
   }

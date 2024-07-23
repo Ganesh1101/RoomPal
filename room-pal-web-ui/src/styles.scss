@@ -2,14 +2,12 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
-.is-invalid {
-    border: 1px solid red;
-  }
+
   
   .invalid-feedback {
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
-    margin-top: -10px;
+    margin-top: -6px;
     color: red;
   }
   input[type="checkbox"]:checked {
@@ -18,4 +16,8 @@
   input[type="radio"]:checked {
     accent-color: #6a23d4bf;
   }
+
+.number-input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
 

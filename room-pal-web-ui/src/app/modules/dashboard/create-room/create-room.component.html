@@ -22,50 +22,99 @@
     </div>
     
     <div>
-      <h2>Description</h2>
-      <textarea id="description" formControlName="description" placeholder="Room Description"
-      [ngClass]="CreateRoomForm.controls['description'].errors &&
-         CreateRoomForm.controls['description'].touched? 'is-invalid' : '' "></textarea>
+      <h2>Details</h2>
+      <textarea id="details" formControlName="details" placeholder="Enter Your Details"
+      [ngClass]="CreateRoomForm.controls['details'].errors &&
+         CreateRoomForm.controls['details'].touched? 'is-invalid' : '' "></textarea>
         @if (
-          CreateRoomForm.controls["description"].errors &&
-          CreateRoomForm.controls["description"].touched
+          CreateRoomForm.controls["details"].errors &&
+          CreateRoomForm.controls["details"].touched
           ){
   
-            @if (CreateRoomForm.controls["description"].errors["required"]) {
+            @if (CreateRoomForm.controls["details"].errors["required"]) {
               <p class="invalid-feedback">Description is required</p>
             }
-            @if (CreateRoomForm.controls["description"].errors["maxlength"]) {
+            @if (CreateRoomForm.controls["details"].errors["maxlength"]) {
               <p class="invalid-feedback">Description should not exceed 500 Characters</p>
             }
-            @if (CreateRoomForm.controls["description"].errors["minlength"]) {
+            @if (CreateRoomForm.controls["details"].errors["minlength"]) {
               <p class="invalid-feedback">Description should be at least 3 Characters</p>
             }
           }
     </div>
-    
     <div>
-      <h2>Capacity</h2>
-      <input id="capacity" type="number" placeholder="0" formControlName="capacity"
-      [ngClass]="CreateRoomForm.controls['capacity'].errors &&
-      CreateRoomForm.controls['capacity'].touched ? 'is-invalid' : ''" />
-      <!-- <ngx-slider [(value)]="value" [options]="options"  class="slider"></ngx-slider> -->
-
+      <h2>Room Type</h2>
+      <select id="roomType" formControlName="roomType" [ngClass]="CreateRoomForm.controls['roomType'].errors && 
+      CreateRoomForm.controls['roomType'].touched? 'is-invalid' : ''" required>
+        <option value="">Select Room Type</option>
+        <option value="individual">Individual</option>
+        <option value="apartment">Apartment</option>
+      </select>
+      @if (
+          CreateRoomForm.controls["roomType"].errors &&
+          CreateRoomForm.controls["roomType"].touched
+          ){
+  
+            @if (CreateRoomForm.controls["roomType"].errors["required"]) {
+              <p class="invalid-feedback">Room Type is required</p>
+            }
+          }
+    </div>
+    <div>
+      <h2>Floor</h2>
+      <input id="floor" class="number-input" type="number" placeholder="0" formControlName="floor"
+      [ngClass]="CreateRoomForm.controls['floor'].errors && CreateRoomForm.controls['floor'].touched ? 'is-invalid' : ''" />
       @if(
-        CreateRoomForm.controls['capacity'].errors &&
-        CreateRoomForm.controls['capacity'].touched
+        CreateRoomForm.controls['floor'].errors &&
+        CreateRoomForm.controls['floor'].touched
       ){
-        @if(CreateRoomForm.controls['capacity'].errors['required']){
-          <p class="invalid-feedback">Capacity is required</p>
+        @if(CreateRoomForm.controls['floor'].errors['required']){
+          <p class="invalid-feedback">floor is required</p>
         }
-        @if(CreateRoomForm.controls['capacity'].errors['min']){
-          <p class="invalid-feedback">Capacity should be at least 1</p>
+        @if(CreateRoomForm.controls['floor'].errors['min']){
+          <p class="invalid-feedback">floor should be at least 1</p>
         }
-        @if(CreateRoomForm.controls['capacity'].errors['max']){
-          <p class="invalid-feedback">Capacity should not exceed 5</p>
+        @if(CreateRoomForm.controls['floor'].errors['max']){
+          <p class="invalid-feedback">floor should not exceed 10</p>
         }
         
       }
-      
+    </div>
+
+    <div>
+      <h2>Availability</h2>
+      <input id="availability" type="number" class="number-input" placeholder="0" formControlName="availability"
+      [ngClass]="CreateRoomForm.controls['availability'].errors &&
+      CreateRoomForm.controls['availability'].touched ? 'is-invalid' : ''" />
+      <!-- <ngx-slider [(value)]="value" [options]="options"  class="slider"></ngx-slider> -->
+
+      @if(
+        CreateRoomForm.controls['availability'].errors &&
+        CreateRoomForm.controls['availability'].touched
+      ){
+        @if(CreateRoomForm.controls['availability'].errors['required']){
+          <p class="invalid-feedback">availability is required</p>
+        }
+        @if(CreateRoomForm.controls['availability'].errors['min']){
+          <p class="invalid-feedback">Availability should be at least 1</p>
+        }
+        @if(CreateRoomForm.controls['availability'].errors['max']){
+          <p class="invalid-feedback">Availability should not exceed 5</p>
+        }
+        
+      }
+    </div>
+    <div>
+      <h2>Gender</h2>
+      <div>
+        <label class="text">
+          <input type="radio" value="male" class="gender" name="gender"
+           formControlName="gender" /> Male</label>
+        <label class="text">
+          <input type="radio" value="female" class="gender" name="gender"
+           formControlName="gender" /> Female</label>
+          
+      </div>
     </div>
     
     <div>
@@ -105,30 +154,55 @@
       <h2>Amenities</h2>
       <div class="checkbox">
         <label>
-          <input type="checkbox" formControlName="amenity1">
+          <input type="checkbox" formControlName="wifi">
           <img src="images/wifi.png"> Wifi
 
 
         </label>
         <label>
-          <input type="checkbox" formControlName="amenity2">
+          <input type="checkbox" formControlName="kitchen">
           <img src="images/freezer.png">Kitchen
       
         </label>
 
         <label>
-          <input type="checkbox" formControlName="amenity3">
+          <input type="checkbox" formControlName="airCondition">
            <img src="images/air-conditioner.png">AC
         
         </label>
         <label>
-          <input type="checkbox" formControlName="amenity4">
+          <input type="checkbox" formControlName="bathroom">
            <img src="images/bathroom.png">Bathroom
         
         </label>
         <label>
-          <input type="checkbox" formControlName="amenity5">
+          <input type="checkbox" formControlName="parking">
            <img src="images/parked-car.png">Parking
+           
+        </label>
+        <label>
+          <input type="checkbox" formControlName="heater">
+           <img src="images/water-heater.png">Heater
+           
+        </label>
+        <label>
+          <input type="checkbox" formControlName="dryer">
+           <img src="images/hair-dryer.png">Dryer
+           
+        </label>
+        <label>
+          <input type="checkbox" formControlName="washer">
+           <img src="images/washer.png">Washer
+           
+        </label>
+        <label>
+          <input type="checkbox" formControlName="pool">
+           <img src="images/pool.png">Pool
+           
+        </label>
+        <label>
+          <input type="checkbox" formControlName="gym">
+           <img src="images/weightlifting.png">Gym
            
         </label>
       </div>
@@ -154,7 +228,7 @@
       <h2>Location</h2>
       <input id="location" formControlName="location" placeholder="choose your  Location"
       [ngClass]="CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched? 'is-invalid':''"/>
-      
+
       @if(
         CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched
       ){
@@ -162,17 +236,27 @@
           <p class="invalid-feedback">Location is required</p>
         }
       }
+
     </div>
-    
+    <!-- <div #mapContainer style="height: 500px;"></div> -->
+    <div #mapContainer id="map"></div>
+    <div>
+      <h2>Longitude</h2>
+       <input type="text"> 
+    </div>
+    <div>
+      <h2>Latitude</h2>
+       <input type="text" > 
+    </div>
     <div>
       <h2>Room Images</h2>
-      <input id="roomImages" type="file" multiple  formControlName="roomImages"
-      [ngClass]="CreateRoomForm.controls['roomImages'].errors && CreateRoomForm.controls['roomImages'].touched? 'is-invalid':''"/>
+      <input id="images" type="file" multiple  formControlName="images"
+      [ngClass]="CreateRoomForm.controls['images'].errors && CreateRoomForm.controls['images'].touched? 'is-invalid':''"/>
       
       @if(
-        CreateRoomForm.controls['roomImages'].errors && CreateRoomForm.controls['roomImages'].touched
+        CreateRoomForm.controls['images'].errors && CreateRoomForm.controls['images'].touched
       ){
-        @if(CreateRoomForm.controls['roomImages'].errors['required']){
+        @if(CreateRoomForm.controls['images'].errors['required']){
           <p class="invalid-feedback">Room Images is required</p>
         }
       }
@@ -180,7 +264,7 @@
     
     <div>
       <h2>Rent</h2>
-      <input id="rent" type="number" formControlName="rent" placeholder="Enter Your Room Rent"
+      <input id="rent" type="number" class="number-input" formControlName="rent" placeholder="Enter Your Room Rent"
       [ngClass]="CreateRoomForm.controls['rent'].errors && CreateRoomForm.controls['rent'].touched? 'is-invalid':''"/>
       
       @if(

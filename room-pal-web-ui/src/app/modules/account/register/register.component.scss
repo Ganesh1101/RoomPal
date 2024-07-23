@@ -49,6 +49,7 @@
     border: 1px solid #000000;
     border-radius: 4px;
     box-sizing: border-box;
+    
   }
   
   .gender,
@@ -104,8 +105,11 @@
     transition: background-color 0.3s, border 0.3s;
     color: #ffffff;
   }
+ .is-invalid {
+    border-color: red;
+  }
   
-  .checkbox {
+  .checkbox  {
     display: flex;
     flex-wrap: wrap;
     gap: 0px;
@@ -246,13 +250,16 @@
   button {
   height: 5.5vh;
   }
+  // .checkbox{
+  //   flex-direction: column;
+  // }
   }
 
   
   @media screen and (max-width: 575px) {
   .card {
   
-    width: 70%;
+    width: 75%;
   }
   .logo {
   height: 12vh;

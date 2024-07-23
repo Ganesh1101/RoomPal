@@ -82,8 +82,13 @@
   @media screen and (min-width: 992px) and (max-width: 1199px) {
     .otp-container {
     width: 400px;
+    font-size: 15px;
     padding: 60px 20px;
 
+    }
+    .invalid-feedback ,.invalid{
+      font-size: 14px;
+      text-align: center;
     }
     .logo {
     height: 16vh;
@@ -109,9 +114,14 @@
     @media screen and (min-width: 768px) and (max-width: 992px) {
     .otp-container {
 
-    width: 400px;
+    width: 350px;
     padding: 60px 20px;
+    font-size: 16px;
 
+    }
+    .invalid-feedback ,.invalid{
+      font-size: 14px;
+      text-align: center;
     }
     .logo {
     height: 16vh;
@@ -136,10 +146,14 @@
     
     @media screen and (min-width: 569px) and (max-width: 768px) {
       .otp-container {
-      width: 400px;
-
-      padding: 60px 20px;
+      width: 380px;
+        font-size: 17px;
+      padding: 60px 10px;
   
+      }
+      .invalid-feedback ,.invalid{
+        font-size: 14px;
+        text-align: center;
       }
       .logo {
       height: 16vh;
@@ -164,10 +178,14 @@
     
     @media screen and (min-width: 385px) and (max-width: 569px) {
       .otp-container {
-        width: 400px;
-
-        padding: 60px 20px;
+        width: 350px;
+        font-size: 18px;
+        padding: 30px 20px;
     
+        }
+        .invalid-feedback ,.invalid{
+          font-size: 14px;
+          text-align: center;
         }
         .logo {
         height: 16vh;
@@ -194,15 +212,21 @@
       .otp-container {
         width: 300px;
         padding: 60px 20px;
-
-    
+        font-size: 18px;
         }
         .logo {
-        height: 16vh;
+        height: 11vh;
         }
         h2 {
-        font-size: 25px;
+        font-size: 20px;
         margin-left: 30px;
+        }
+        ::placeholder{
+          font-size: 14px;
+        }
+        .invalid-feedback ,.invalid{
+          font-size: 14px;
+          text-align: center;
         }
      input {
         padding: 12px;

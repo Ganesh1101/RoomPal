@@ -4,18 +4,20 @@
     padding: 60px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.854);
-    width: 45%;
+    width: 40%;
     margin: auto;
     font-size: 25px;
   
   }
-  
+  #map {
+    height: 500px;
+    width: 100%;
+  }
   .logo {
     width: 60%;
     height: 19vh;
     margin-top: -10%;
     margin-left: 15%;
-
   }
 
   .is-invalid {
@@ -28,7 +30,16 @@
       text-align: left;
       margin: 10px 0;
     }
-   
+     .gender,.text {
+    //  margin-right: -10px;
+     display: inline;
+     font-size: 21px;
+     width: 110px;
+     height: 3vh;
+
+
+  }
+  
     input, textarea, button {
       width: 100%;
       padding: 15px;
@@ -67,7 +78,16 @@
       padding-top: 10px;
 
   }
-  
+  #roomType{
+    margin-top: 1%;
+    margin-bottom: 10%;
+    font-size: 20px;
+    width: 100%;
+    height: 8vh;
+    color: #4f4d4d;
+    border: 1px solid #222;
+    border-radius: 5px;
+  }
   ::placeholder{
     font-size: 20px;
   }
@@ -98,7 +118,7 @@
 @media screen and (min-width: 992px) and (max-width: 1199px) 
 {
   .card {
-  width: 40%;
+  width: 55%;
 
   }
   .logo {
@@ -135,7 +155,7 @@
   @media screen and (min-width: 768px) and (max-width: 992px) {
   .card {
 
-  width: 55%;
+  width: 65%;
 
   }
   .logo {
@@ -170,7 +190,7 @@
    {
   .card {
   width: 65%;
-
+padding: 15px;
   }
   .logo {
   width: 55%;
@@ -206,7 +226,7 @@
   @media screen and (min-width: 385px) and (max-width: 569px) {
   .card {
   width: 75%;
-
+padding: 15px;
   }
   .logo {
         width: 50%;
@@ -238,7 +258,7 @@
   @media screen and (min-width: 99px) and (max-width: 385px) {
   .card {
   width: 100%;
-
+padding: 20px;
   }
   .logo {
   width: 95%;
