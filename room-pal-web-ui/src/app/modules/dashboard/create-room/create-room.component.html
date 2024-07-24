@@ -180,7 +180,7 @@
            <img src="images/parked-car.png">Parking
            
         </label>
-        <label>
+        <!-- <label>
           <input type="checkbox" formControlName="heater">
            <img src="images/water-heater.png">Heater
            
@@ -204,7 +204,7 @@
           <input type="checkbox" formControlName="gym">
            <img src="images/weightlifting.png">Gym
            
-        </label>
+        </label> -->
       </div>
     </div>
     <div>
@@ -226,29 +226,32 @@
     
     <div>
       <h2>Location</h2>
-      <input id="location" formControlName="location" placeholder="choose your  Location"
-      [ngClass]="CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched? 'is-invalid':''"/>
+      <p>Choose Your Location Here <i class="fa fa-hand-o-down" style="font-size:24px"></i>
+      </p>
 
+      <div #mapContainer id="map"></div>
+      <!-- <input id="location" formControlName="location" placeholder="choose your  Location"
+      [ngClass]="CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched? 'is-invalid':''"/>
       @if(
         CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched
       ){
         @if(CreateRoomForm.controls['location'].errors['required']){
           <p class="invalid-feedback">Location is required</p>
         }
-      }
+      } -->
 
     </div>
     <!-- <div #mapContainer style="height: 500px;"></div> -->
-    <div #mapContainer id="map"></div>
+    
     <div>
       <h2>Longitude</h2>
-       <input type="text"> 
+       <input type="text" formControlName="longitude"> 
     </div>
     <div>
       <h2>Latitude</h2>
-       <input type="text" > 
+       <input type="text" formControlName="latitude"> 
     </div>
-    <div>
+     <div>
       <h2>Room Images</h2>
       <input id="images" type="file" multiple  formControlName="images"
       [ngClass]="CreateRoomForm.controls['images'].errors && CreateRoomForm.controls['images'].touched? 'is-invalid':''"/>
@@ -261,6 +264,7 @@
         }
       }
     </div>
+    
     
     <div>
       <h2>Rent</h2>

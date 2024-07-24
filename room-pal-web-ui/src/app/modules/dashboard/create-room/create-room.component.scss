@@ -31,7 +31,6 @@
       margin: 10px 0;
     }
      .gender,.text {
-    //  margin-right: -10px;
      display: inline;
      font-size: 21px;
      width: 110px;
@@ -39,7 +38,10 @@
 
 
   }
-  
+p{
+  font-size: 16px;
+}
+
     input, textarea, button {
       width: 100%;
       padding: 15px;

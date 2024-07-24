@@ -20,11 +20,11 @@ import{MarkerClusterer} from "@googlemaps/markerclusterer"
     styleUrl: './create-room.component.scss',
   })
   export class CreateRoomComponent implements AfterViewInit  {
-    @ViewChild("mapContainer") gmap!: ElementRef ; 
+    @ViewChild("mapContainer") gmap!: ElementRef ;
     map: google.maps.Map | undefined;
     lat = -33.87187348896257 ;
     lng = 151.22994696408978;
-  
+
      locations = [
       { lat: -31.56391, lng: 147.154312 },
       { lat: -33.718234, lng: 150.363181 },
@@ -50,7 +50,8 @@ import{MarkerClusterer} from "@googlemaps/markerclusterer"
       { lat: -42.735258, lng: 147.438 },
       { lat: -43.999792, lng: 170.463352 },
     ];
-  
+    
+    
     markers = [
       {
         position: new google.maps.LatLng(40.73061, 73.935242),
@@ -62,12 +63,12 @@ import{MarkerClusterer} from "@googlemaps/markerclusterer"
       }
     ];
     coordinates = new google.maps.LatLng(this.lat, this.lng);
-  
+
     mapOptions: google.maps.MapOptions = {
       center: this.coordinates,
       zoom: 8,
     };
-  
+
     marker = new google.maps.Marker({
       position: this.coordinates,
       title: "Marker 1"
@@ -78,7 +79,7 @@ polygonPath: google.maps.LatLng[] = [
   new google.maps.LatLng(32.321, -64.757),
   new google.maps.LatLng(25.774, -80.19),
 ];
-  
+
     private _httpService = inject (HttpClient)
     CreateRoomForm: FormGroup<{
       roomName: FormControl;
@@ -101,13 +102,15 @@ polygonPath: google.maps.LatLng[] = [
       gym: FormControl;
       address: FormControl;
       location: FormControl;
+      latitude: FormControl;
+      longitude: FormControl;
       images: FormControl;
       rent: FormControl;
       preference1: FormControl;
       preference2: FormControl;
       preference3: FormControl;
       preference4: FormControl;
-     
+
     }> = new FormGroup({
       roomName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       details: new FormControl('',[Validators.required,Validators.maxLength(500),Validators.minLength(3)] ),
@@ -129,12 +132,14 @@ polygonPath: google.maps.LatLng[] = [
       gym: new FormControl(false),
       address: new FormControl('', Validators.required),
       location: new FormControl('',Validators.required),
+      latitude: new FormControl('', Validators.required),
+      longitude: new FormControl('', Validators.required),
       images: new FormControl('', Validators.required),
       rent: new FormControl('', [Validators.required,Validators.min(0)]),
       preference1: new FormControl(true),
       preference2: new FormControl(false),
       preference3: new FormControl(false),
-      preference4: new FormControl(false)          
+      preference4: new FormControl(false)
   });
   value: number = 10;
   options: Options = {
@@ -149,31 +154,37 @@ polygonPath: google.maps.LatLng[] = [
   ngAfterViewInit(): void {
     this.mapInitializer();
   }
-  
 
 
+
+ 
   mapInitializer(): void {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.marker.setMap(this.map);
-
+  
     this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
       const latLng = event.latLng;
       if (latLng) {
         const lat = latLng.lat();
         const lng = latLng.lng();
-        console.log('Latitude:', lat);
-        console.log('Longitude:', lng);
+        console.log('Latitude:', lat.toFixed(7));
+        console.log('Longitude:', lng.toFixed(7));
         
+        this.CreateRoomForm.patchValue({
+          latitude: lat.toFixed(7),
+          longitude: lng.toFixed(7)
+        });
+  
+        this.marker.setPosition(latLng);
       }
     });
   }
-
 
   onSubmit() {
     this.CreateRoomForm.markAllAsTouched();
     console.log(this.CreateRoomForm.value);
     console.log(this.CreateRoomForm.controls);
-    
+
     if(this.CreateRoomForm.valid){
       const roomValues ={
         roomName: this.CreateRoomForm.value.roomName,
