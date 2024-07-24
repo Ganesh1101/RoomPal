@@ -8,7 +8,6 @@ import {  AbstractControl,
   ReactiveFormsModule,
   ValidationErrors,
   Validators, } from '@angular/forms';
-  import intlTelInput from 'intl-tel-input';
 import { HttpClient } from '@angular/common/http';
 
   @Component({
@@ -62,19 +61,7 @@ export class LoginComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    const element = document.getElementById('phone');
-    const inputElement = element as HTMLInputElement;
     
-
-    if (inputElement){
-      intlTelInput(inputElement,{
-        initialCountry: 'in',
-        separateDialCode: true,
-        utilsScript:'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.0/js/utils.js'
-      })
-    }else {
-      console.error('The element is not an HTMLInputElement');
-    }
   }
 
   onLoginClick() {

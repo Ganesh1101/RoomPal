@@ -101,10 +101,17 @@
     border: 1px solid #222;
     border-radius: 5px;
   }
-  .gender{
-    
-    
+  
+  .gender,.text{
+    display: inline;
+    height: 3vh;
+    width: 110px;
+    font-size: 20px;
   }
+    #map {
+      height: 500px;
+      width: 100%;
+    }
 
   @media (max-width:1200px){
     

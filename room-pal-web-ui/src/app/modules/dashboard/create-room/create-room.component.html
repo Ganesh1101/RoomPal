@@ -69,11 +69,17 @@
     </div>
     <div>
       <h2>Gender</h2>
-      <label class="text">
-        <input type="radio" value="Male" class="gender" name="gender" formControlName="gender"/> Male</label>
-      <label class="text">
-        <input type="radio" value="Female" class="gender" name="gender" formControlName="gender"/> Female</label>
+      <div>
+        <label class="text">
+          <input type="radio" value="male" class="gender" name="gender"
+           formControlName="gender" /> Male</label>
+        <label class="text">
+          <input type="radio" value="female" class="gender" name="gender"
+           formControlName="gender" /> Female</label>
+          
+      </div>
     </div>
+    
     <div>
       <h2>Floor</h2>
       <input id="floor" type="number" placeholder="0" formControlName="floor" class="number-input" 
@@ -99,7 +105,7 @@
 
         <option value="">select Room Type</option>
         <option value="individual">Individual</option>
-        <option  value="appartment">Appartment</option>
+        <option  value="apartment">Apartment</option>
       </select>
       
       @if(
@@ -148,29 +154,29 @@
       <h2>Amenities</h2>
       <div class="checkbox">
         <label>
-          <input type="checkbox" formControlName="amenity1">
+          <input type="checkbox" formControlName="wifi">
           <img src="images/wifi.jpg"> Wifi
 
 
         </label>
         <label>
-          <input type="checkbox" formControlName="amenity2">
+          <input type="checkbox" formControlName="kitchen">
           <img src="images/freezer.jpg">Kitchen
       
         </label>
 
         <label>
-          <input type="checkbox" formControlName="amenity3">
+          <input type="checkbox" formControlName="airCondition">
            <img src="images/airconditioner.jpg">AC
         
         </label>
         <label>
-          <input type="checkbox" formControlName="amenity4">
+          <input type="checkbox" formControlName="bathroom">
            <img src="images/bathroom.jpg">Bathroom
         
         </label>
         <label>
-          <input type="checkbox" formControlName="amenity5">
+          <input type="checkbox" formControlName="parking">
            <img src="images/parkedcar.jpg">Parking
            
         </label>
@@ -206,16 +212,17 @@
         }
       }
     </div>
+    <div #mapContainer id="map"></div>
     
     <div>
       <h2>Room Images</h2>
-      <input id="roomImages" type="file" multiple  formControlName="roomImages"
-      [ngClass]="CreateRoomForm.controls['roomImages'].errors && CreateRoomForm.controls['roomImages'].touched? 'is-invalid':''"/>
+      <input id="images" type="file" multiple  formControlName="images"
+      [ngClass]="CreateRoomForm.controls['images'].errors && CreateRoomForm.controls['images'].touched? 'is-invalid':''"/>
       
       @if(
-        CreateRoomForm.controls['roomImages'].errors && CreateRoomForm.controls['roomImages'].touched
+        CreateRoomForm.controls['images'].errors && CreateRoomForm.controls['images'].touched
       ){
-        @if(CreateRoomForm.controls['roomImages'].errors['required']){
+        @if(CreateRoomForm.controls['images'].errors['required']){
           <p class="invalid-feedback">Room Images is required</p>
         }
       }
