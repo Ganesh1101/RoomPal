@@ -101,7 +101,6 @@ polygonPath: google.maps.LatLng[] = [
       pool: FormControl;
       gym: FormControl;
       address: FormControl;
-      location: FormControl;
       latitude: FormControl;
       longitude: FormControl;
       images: FormControl;
@@ -131,7 +130,6 @@ polygonPath: google.maps.LatLng[] = [
       pool: new FormControl(false),
       gym: new FormControl(false),
       address: new FormControl('', Validators.required),
-      location: new FormControl('',Validators.required),
       latitude: new FormControl('', Validators.required),
       longitude: new FormControl('', Validators.required),
       images: new FormControl('', Validators.required),
@@ -194,8 +192,10 @@ polygonPath: google.maps.LatLng[] = [
         floor : this.CreateRoomForm.value.floor,
         whatsappLink: this.CreateRoomForm.value.whatsappLink,
         telegramLink: this.CreateRoomForm.value.telegramLink,
+        longitude: this.CreateRoomForm.value.longitude,
+        latitude: this.CreateRoomForm.value.latitude,
         amenities:{
-          wifi: this.CreateRoomForm.value.wifi,
+        wifi: this.CreateRoomForm.value.wifi,
         kitchen: this.CreateRoomForm.value.kitchen,
         airCondition: this.CreateRoomForm.value.airCondition,
         parking: this.CreateRoomForm.value.parking},

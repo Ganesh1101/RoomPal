@@ -230,26 +230,34 @@
       </p>
 
       <div #mapContainer id="map"></div>
-      <!-- <input id="location" formControlName="location" placeholder="choose your  Location"
-      [ngClass]="CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched? 'is-invalid':''"/>
-      @if(
-        CreateRoomForm.controls['location'].errors && CreateRoomForm.controls['location'].touched
-      ){
-        @if(CreateRoomForm.controls['location'].errors['required']){
-          <p class="invalid-feedback">Location is required</p>
-        }
-      } -->
+      
 
     </div>
     <!-- <div #mapContainer style="height: 500px;"></div> -->
     
     <div>
       <h2>Longitude</h2>
-       <input type="text" formControlName="longitude"> 
+      <input id="location" formControlName="longitude" placeholder="choose your  Location"
+      [ngClass]="CreateRoomForm.controls['longitude'].errors && CreateRoomForm.controls['longitude'].touched? 'is-invalid':''"/>
+      @if(
+        CreateRoomForm.controls['longitude'].errors && CreateRoomForm.controls['longitude'].touched
+      ){
+        @if(CreateRoomForm.controls['longitude'].errors['required']){
+          <p class="invalid-feedback">Longitude is required</p>
+        }
+      } 
     </div>
     <div>
       <h2>Latitude</h2>
-       <input type="text" formControlName="latitude"> 
+      <input id="location" formControlName="latitude" placeholder="choose your  Location"
+      [ngClass]="CreateRoomForm.controls['latitude'].errors && CreateRoomForm.controls['latitude'].touched? 'is-invalid':''"/>
+      @if(
+        CreateRoomForm.controls['latitude'].errors && CreateRoomForm.controls['latitude'].touched
+      ){
+        @if(CreateRoomForm.controls['latitude'].errors['required']){
+          <p class="invalid-feedback">Latitude is required</p>
+        }
+      } 
     </div>
      <div>
       <h2>Room Images</h2>
