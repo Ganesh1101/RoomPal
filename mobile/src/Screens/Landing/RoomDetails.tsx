@@ -14,6 +14,17 @@ import Carousel from 'react-native-snap-carousel';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoomByName } from '../../reducers/room/roomSlice';
 import { primaryColor } from '../Styles/Styles';
+import axios from 'axios';
+import { CFPaymentGatewayService } from 'react-native-cashfree-pg-sdk';
+import {
+  CFDropCheckoutPayment,
+  CFEnvironment,
+  CFPaymentComponentBuilder,
+  CFPaymentModes,
+  CFSession,
+  CFThemeBuilder,
+} from 'cashfree-pg-api-contract';
+
 
 // Importing local images
 const backArrowImage = require('../Images/ic_backArrow.png');
@@ -120,7 +131,64 @@ const RoomDetails = ({ route, navigation }) => {
       </View>
     );
   };
-
+  const createOrder = async () => {
+    try {
+      const response = await axios.post(
+        'https://test.cashfree.com/api/v2/cftoken/order',
+        {
+          orderId: 'Order0001',
+          orderAmount: 2000,
+          orderCurrency: 'INR',
+        },
+        {
+          headers: {
+            'X-Client-Secret': 'cfsk_ma_test_42383a0c508319c6afbaaa8518324565_1b53e05d',
+            'X-Client-Id': 'TEST10123844e567d51edbee7c8a8cec44832101',
+          },
+        }
+      );
+  
+      if (response.status === 200) {
+        console.log(response.data);
+        return response.data;
+      }
+    } catch (error) {
+      console.error('Error creating order', error);
+    }
+  };
+  const handlePayment = async () => {
+    try {
+      const order = await createOrder();
+      if (order && order.payment_session_id) {
+        const session = new CFSession()
+          .setEnvironment(CFEnvironment.SANDBOX) // or CFEnvironment.PRODUCTION
+          .setOrder(order.payment_session_id);
+  
+        const paymentComponent = new CFPaymentComponentBuilder()
+          .add(CFPaymentModes.CARD)
+          .add(CFPaymentModes.UPI)
+          .add(CFPaymentModes.NB)
+          .add(CFPaymentModes.WALLET)
+          .add(CFPaymentModes.PAY_LATER)
+          .build();
+  
+        const theme = new CFThemeBuilder()
+          .setNavigationBarBackgroundColor('#94ee95')
+          .setNavigationBarTextColor('#FFFFFF')
+          .setButtonBackgroundColor('#FFC107')
+          .setButtonTextColor('#FFFFFF')
+          .setPrimaryTextColor('#212121')
+          .setSecondaryTextColor('#757575')
+          .build();
+  
+        const paymentObject = new CFDropCheckoutPayment(session, paymentComponent, theme);
+        CFPaymentGatewayService.doPayment(paymentObject);
+      }
+    } catch (error) {
+      console.error('Payment initiation failed', error);
+    }
+  };
+  
   const renderAmenityItem = ({ item }) => {
     return (
       <View style={styles.amenityItem}>
@@ -151,7 +219,7 @@ const RoomDetails = ({ route, navigation }) => {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        { text: 'YES', onPress: () => console.log('OK Pressed') },
+        { text: 'YES', onPress: () =>{handlePayment()} },
       ],
       { cancelable: false },
     );
