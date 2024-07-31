@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoomByName } from '../../reducers/room/roomSlice';
 import { primaryColor } from '../Styles/Styles';
 import axios from 'axios';
-import { CFPaymentGatewayService } from 'react-native-cashfree-pg-sdk';
+import { CFPaymentGatewayService} from 'react-native-cashfree-pg-sdk';
 import {
   CFDropCheckoutPayment,
   CFEnvironment,
@@ -23,8 +23,9 @@ import {
   CFPaymentModes,
   CFSession,
   CFThemeBuilder,
+  
 } from 'cashfree-pg-api-contract';
-
+import RNPgReactNativeSdk from 'react-native-pg-sdk'; // Ensure correct import
 
 // Importing local images
 const backArrowImage = require('../Images/ic_backArrow.png');
@@ -149,46 +150,98 @@ const RoomDetails = ({ route, navigation }) => {
       );
   
       if (response.status === 200) {
-        console.log(response.data);
-        return response.data;
+        const order = response.data;
+        console.log("order: ",order)
+  
+        // const inputParams = {
+        //   orderId: 'Order0001',
+        //   orderAmount: '1',
+        //   appId: 'TEST10123844e567d51edbee7c8a8cec44832101',
+        //   tokenData: order.cftoken,
+        //   orderCurrency: 'INR',
+        //   orderNote: 'asdasdasd',
+        //   notifyUrl: 'https://test.gocashfree.com/notify',
+        //   customerName: 'Cashfree User',
+        //   customerPhone: '9999999999',
+        //   customerEmail: 'cashfree@cashfree.com',
+        // };
+        console.log(RNPgReactNativeSdk);
+
+        const inputParams = new Map([
+          ['orderId', 'Order0001'],
+          ['orderAmount', '1'],
+          ['appId', 'TEST10123844e567d51edbee7c8a8cec44832101'],
+          ['tokenData', order.cftoken],
+          ['orderCurrency', 'INR'],
+          ['orderNote', 'Order note'],
+          ['notifyUrl', 'https://test.gocashfree.com/notify'],
+          ['customerName', 'Cashfree User'],
+          ['customerPhone', '9999999999'],
+          ['customerEmail', 'cashfree@cashfree.com'],
+        ]);
+  
+        try {
+          if (RNPgReactNativeSdk && RNPgReactNativeSdk.startPaymentWEB) {
+            RNPgReactNativeSdk.startPaymentWEB(inputParams,"TEST", (result) => {
+              console.log(result);
+              let response = '';
+              const obj = JSON.parse(result, (key, value) => {
+                console.log(`${key}::${value}`);
+                response += `${key}::${value}\n`;
+              });
+              return response;
+            });
+          } else {
+            console.error('RNPgReactNativeSdk is not initialized correctly.');
+          }
+        } catch (error) {
+          console.error('An error occurred during the payment process:', error);
+        }
+      } else {
+        console.error('Failed to create order:', response.status);
       }
     } catch (error) {
       console.error('Error creating order', error);
     }
-  };
-  const handlePayment = async () => {
-    try {
-      const order = await createOrder();
-      if (order && order.payment_session_id) {
-        const session = new CFSession()
-          .setEnvironment(CFEnvironment.SANDBOX) // or CFEnvironment.PRODUCTION
-          .setOrder(order.payment_session_id);
+  }
+
+  // const handlePayment = async () => {
+  //   try {
+  //     const order = await createOrder();
+  //     console.log('Order Data:', order); // Add this line
+  //     if (order && order.cftoken) {
+  //       const session = new CFSession()
+  //         .setEnvironment(CFEnvironment.SANDBOX) // or CFEnvironment.PRODUCTION
+  //         .setOrder(order.orderId);
   
-        const paymentComponent = new CFPaymentComponentBuilder()
-          .add(CFPaymentModes.CARD)
-          .add(CFPaymentModes.UPI)
-          .add(CFPaymentModes.NB)
-          .add(CFPaymentModes.WALLET)
-          .add(CFPaymentModes.PAY_LATER)
-          .build();
+  //       const paymentComponent = new CFPaymentComponentBuilder()
+  //         .add(CFPaymentModes.CARD)
+  //         .add(CFPaymentModes.UPI)
+  //         .add(CFPaymentModes.NB)
+  //         .add(CFPaymentModes.WALLET)
+  //         .add(CFPaymentModes.PAY_LATER)
+  //         .build();
   
-        const theme = new CFThemeBuilder()
-          .setNavigationBarBackgroundColor('#94ee95')
-          .setNavigationBarTextColor('#FFFFFF')
-          .setButtonBackgroundColor('#FFC107')
-          .setButtonTextColor('#FFFFFF')
-          .setPrimaryTextColor('#212121')
-          .setSecondaryTextColor('#757575')
-          .build();
+  //       const theme = new CFThemeBuilder()
+  //         .setNavigationBarBackgroundColor('#94ee95')
+  //         .setNavigationBarTextColor('#FFFFFF')
+  //         .setButtonBackgroundColor('#FFC107')
+  //         .setButtonTextColor('#FFFFFF')
+  //         .setPrimaryTextColor('#212121')
+  //         .setSecondaryTextColor('#757575')
+  //         .build();
   
-        const paymentObject = new CFDropCheckoutPayment(session, paymentComponent, theme);
-        CFPaymentGatewayService.doPayment(paymentObject);
-      }
-    } catch (error) {
-      console.error('Payment initiation failed', error);
-    }
-  };
+  //       const paymentObject = new CFDropCheckoutPayment(session, paymentComponent, theme);
+  //       CFPaymentGatewayService.doPayment(paymentObject);
+  //     } else {
+  //       console.error('Invalid order data:', order);
+  //     }
+  //   } catch (error) {
+  //     console.error('Payment initiation failed', error);
+  //   }
+  // };
   
+
   const renderAmenityItem = ({ item }) => {
     return (
       <View style={styles.amenityItem}>
@@ -219,7 +272,7 @@ const RoomDetails = ({ route, navigation }) => {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        { text: 'YES', onPress: () =>{handlePayment()} },
+        { text: 'YES', onPress: () =>{createOrder()} },
       ],
       { cancelable: false },
     );

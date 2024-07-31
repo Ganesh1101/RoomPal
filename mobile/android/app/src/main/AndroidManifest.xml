@@ -30,6 +30,13 @@
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
+            <queries>
+              <intent>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="upi" android:host="pay"/>
+              </intent>
+              <package android:name="com.android.chrome" />
+            </queries>
         </intent-filter>
       </activity>
     </application>
